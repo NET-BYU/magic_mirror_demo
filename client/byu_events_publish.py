@@ -56,6 +56,7 @@ def formatDate(time):
     monthFormatted = months[month]
     newtime = dayOfWeek + ", " + monthFormatted + " " + str(day)
     return newtime
+
 #publishes the next four events under topics immerse/events/title,date,location/EVENTNUMBER
 for i in l:
     t = "immerse/event/title/"+str(i)
