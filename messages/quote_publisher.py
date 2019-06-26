@@ -28,6 +28,6 @@ while quote_cnt < 5:
         auth={"username": "messages", "password": "yMk7upKt2dcGEao3u2uxvXC4KnQRL224"},
         tls={"ca_certs": "/home/mwarner/Downloads/ca.crt"},
     )
-    # controls how often a new quote should be pulled from the api
+    # time between publishing each quote
     time.sleep(5)
     quote_cnt += 1
