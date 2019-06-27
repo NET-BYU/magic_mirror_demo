@@ -27,7 +27,7 @@ publish.single(
     hostname="postman.cloudmqtt.com", # address??
     port=27408,
     auth={"username": "messages", "password": "yMk7upKt2dcGEao3u2uxvXC4KnQRL224"},
-    tls={"ca_certs": "/home/mwarner/Downloads/ca.crt"},
+    tls={"ca_certs": "/home/maw276/magic_mirror_demo/messages/quote/ca.crt"},
 )
 
     # # time between publishing each quote
