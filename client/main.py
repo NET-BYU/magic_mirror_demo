@@ -1,12 +1,11 @@
 import paho.mqtt.client as mqtt
 
-from Client.WeatherAPI.WeatherAPI import Weather
+from client.WeatherAPI.WeatherAPI import Weather
 
 import time
 
 
-def on_log(client, userdata, level, buf):
-    print("log: ", buf)
+
 
 class main:
     broker_address = "postman.cloudmqtt.com"
@@ -15,18 +14,24 @@ class main:
     port = 27408
     ssl_certificate = "C:/Users/mbjerreg/Downloads/ca.crt"
 
+    def on_log(self, client, userdata, level, buf):
+        print("log: ", buf)
+
     def __init__(self, topics):
-        client = self.create_client("client")
-        client.on_message = self.on_message
-        # client.on_log = on_log
-        client.subscribe('#')
-        client.loop_start()
+        self.weather = Weather()
+        self.client = self.create_client("weather_client")
+        self.client.on_message = self.on_message
+        self.client.on_log = self.on_log
+        self.client.subscribe('Weather/Update/#')
+        self.client.subscribe('Weather/Update')
+        self.client.loop_start()
         print("Publishing to 'Weather/Update")
-        client.publish('Weather/Update', "test 4242")
+        self.client.publish('Weather/Update', "test 4242")
         time.sleep(4)
         # client.loop_stop()
-        self.client = client
-        self.weather = Weather()
+
+
+
 
     def run(self):
         # self.client.loop_forever()
@@ -57,6 +62,7 @@ class main:
 
     def on_message(self, client, userdata, message):
         print("message topic=", message.topic)
+        print("message received ", str(message.payload.decode("utf-8")))
         request = self.determine_request(message.topic)
         request()
         # temp = request()
@@ -84,32 +90,32 @@ class main:
 
     def get_weather(self):
         temp = self.weather.get_temp()
-        self.client.publish("Weather/Temp", temp, 0)
+        self.client.publish("immerse/Weather/Temp", temp, 0)
         return temp
 
     def get_condition(self):
         condition = self.weather.get_condition()
-        self.client.publish("Weather/Condition", condition, 0)
+        self.client.publish("immerse/Weather/Condition", condition, 0)
 
     def get_sunrise(self):
         sunrise = self.weather.get_sunrise()
-        self.client.publish("Weather/Sunrise", sunrise, 0)
+        self.client.publish("immerse/Weather/Sunrise", sunrise, 0)
 
     def get_sunset(self):
         sunset = self.weather.get_sunset()
-        self.client.publish("Weather/Sunset", sunset, 0)
+        self.client.publish("immerse/Weather/Sunset", sunset, 0)
 
     def get_cloud_cover(self):
         cloud_cover = self.weather.get_cloud_cover()
-        self.client.publish("Weather/Clouds", cloud_cover, 0)
+        self.client.publish("immerse/Weather/Clouds", cloud_cover, 0)
 
     def get_wind_speed(self):
         wind_speed = self.weather.get_wind_speed()
-        self.client.publish("Weather/Wind_Speed", wind_speed, 0)
+        self.client.publish("immerse/Weather/Wind_Speed", wind_speed, 0)
 
     def get_humidity(self):
         humidity = self.weather.get_humidity()
-        self.client.publish("Weather/Humidity", humidity, 0)
+        self.client.publish("immerse/Weather/Humidity", humidity, 0)
 
 
 if __name__ == '__main__':
