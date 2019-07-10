@@ -21,8 +21,18 @@ formatted_quote = "\"{0}\" - {1}".format(quote_text, author)
 
 # publish quote to MQTT broker
 publish.single(
-    "immerse/test",  # broker and topic
-    formatted_quote,  # data (the quote)
+    "immerse/quote/text",  # broker and topic
+    quote_text,  # data (the quote)
+    # broker access information
+    hostname="postman.cloudmqtt.com", # address??
+    port=27408,
+    auth={"username": "messages", "password": "yMk7upKt2dcGEao3u2uxvXC4KnQRL224"},
+    tls={"ca_certs": "/home/maw276/magic_mirror_demo/messages/quote/ca.crt"},
+)
+
+publish.single(
+    "immerse/quote/author",  # broker and topic
+    author,  # data (the quote)
     # broker access information
     hostname="postman.cloudmqtt.com", # address??
     port=27408,
