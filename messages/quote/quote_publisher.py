@@ -1,3 +1,6 @@
+############################################################################################################################
+# Quote API Option 1 favqs.com
+
 import paho.mqtt.publish as publish
 import urllib.request
 import json
@@ -33,3 +36,5 @@ publish.single(
     # # time between publishing each quote
     # time.sleep(5)
     # quote_cnt += 1
+##########################################################################################################################
+# Quote API Option 2 brainyquote.com
