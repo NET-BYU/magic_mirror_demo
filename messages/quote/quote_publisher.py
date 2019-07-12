@@ -7,8 +7,8 @@
 # import time
 #
 # # controls how many quotes are publish (for each run of this file)
-# # quote_cnt = 0
-# # while quote_cnt < 5:
+# # quote_quote_type = 0
+# # while quote_quote_type < 5:
 #
 # # url of the daily quote
 # the_url = 'https://favqs.com/api/qotd'
@@ -45,42 +45,55 @@
 #
 #     # # time between publishing each quote
 #     # time.sleep(5)
-#     # quote_cnt += 1
+#     # quote_quote_type += 1
 # ##########################################################################################################################
 # Quote API Option 2 brainyquote.com
 import paho.mqtt.publish as publish
 import requests
 import xmltodict
 import time
+quote_index = 0
+while quote_index < 4:
+    quote_type = 0
+    while quote_type < 3:
+        if quote_type == 0:
+            brainy_quote_url = 'https://www.brainyquote.com/link/quotefu.rss'
+        if quote_type == 1:
+            brainy_quote_url = 'https://www.brainyquote.com/link/quotelo.rss'
+        if quote_type == 2:
+            brainy_quote_url = 'https://www.brainyquote.com/link/quotebr.rss'
+        else:
+            brainy_quote_url = 'https://www.brainyquote.com/link/quotefu.rss'
 
+        data = requests.get(brainy_quote_url)
+        xpars = xmltodict.parse(data.text)
 
-brainy_quote_url = 'https://www.brainyquote.com/link/quotefu.rss'
-data = requests.get(brainy_quote_url)
-xpars = xmltodict.parse(data.text)
+        rssFeed = (xpars['rss'])
+        channel = (rssFeed['channel'])
+        item = (channel['item'])
+        author = (item[quote_index]['title'])
+        quote_text = (item[quote_index]['description'])
 
-rssFeed = (xpars['rss'])
-channel = (rssFeed['channel'])
-item = (channel['item'])
-author = (item[0]['title'])
-quote_text = (item[0]['description'])
+        # publish quote to MQTT broker
+        publish.single(
+            "immerse/quote/text",
+            quote_text,
+            hostname="postman.cloudmqtt.com",
+            port=27408,
+            auth={"username": "messages", "password": "yMk7upKt2dcGEao3u2uxvXC4KnQRL224"},
+            tls={"ca_certs": "/home/mwarner/Downloads/ca.crt"},
+            # tls={"ca_certs": "/home/maw276/magic_mirror_demo/messages/quote/ca.crt"},
+        )
+        publish.single(
+            "immerse/quote/author",
+            author,
+            hostname="postman.cloudmqtt.com",
+            port=27408,
+            auth={"username": "messages", "password": "yMk7upKt2dcGEao3u2uxvXC4KnQRL224"},
+            tls={"ca_certs": "/home/mwarner/Downloads/ca.crt"},
+            # tls={"ca_certs": "/home/maw276/magic_mirror_demo/messages/quote/ca.crt"},
+        )
 
-# publish quote to MQTT broker
-publish.single(
-    "immerse/quote/text",  # broker and topic
-    quote_text,  # data (the quote)
-    # broker access information
-    hostname="postman.cloudmqtt.com", # address??
-    port=27408,
-    auth={"username": "messages", "password": "yMk7upKt2dcGEao3u2uxvXC4KnQRL224"},
-    tls={"ca_certs": "/home/maw276/magic_mirror_demo/messages/quote/ca.crt"},
-)
-
-publish.single(
-    "immerse/quote/author",  # broker and topic
-    author,  # data (the quote)
-    # broker access information
-    hostname="postman.cloudmqtt.com", # address??
-    port=27408,
-    auth={"username": "messages", "password": "yMk7upKt2dcGEao3u2uxvXC4KnQRL224"},
-    tls={"ca_certs": "/home/maw276/magic_mirror_demo/messages/quote/ca.crt"},
-)
+        time.sleep(600)
+        quote_type += 1
+    quote_index += 1
