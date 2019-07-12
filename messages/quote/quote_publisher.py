@@ -59,9 +59,9 @@ while quote_index < 4:
         if quote_type == 0:
             brainy_quote_url = 'https://www.brainyquote.com/link/quotefu.rss'
         if quote_type == 1:
-            brainy_quote_url = 'https://www.brainyquote.com/link/quotelo.rss'
+            brainy_quote_url = 'https://www.brainyquote.com/link/quotelbr.rss'
         if quote_type == 2:
-            brainy_quote_url = 'https://www.brainyquote.com/link/quotebr.rss'
+            brainy_quote_url = 'https://www.brainyquote.com/link/quotelo.rss'
         else:
             brainy_quote_url = 'https://www.brainyquote.com/link/quotefu.rss'
 
@@ -81,8 +81,7 @@ while quote_index < 4:
             hostname="postman.cloudmqtt.com",
             port=27408,
             auth={"username": "messages", "password": "yMk7upKt2dcGEao3u2uxvXC4KnQRL224"},
-            tls={"ca_certs": "/home/mwarner/Downloads/ca.crt"},
-            # tls={"ca_certs": "/home/maw276/magic_mirror_demo/messages/quote/ca.crt"},
+            tls={"ca_certs": "/home/maw276/magic_mirror_demo/messages/quote/ca.crt"},
         )
         publish.single(
             "immerse/quote/author",
@@ -90,10 +89,11 @@ while quote_index < 4:
             hostname="postman.cloudmqtt.com",
             port=27408,
             auth={"username": "messages", "password": "yMk7upKt2dcGEao3u2uxvXC4KnQRL224"},
-            tls={"ca_certs": "/home/mwarner/Downloads/ca.crt"},
-            # tls={"ca_certs": "/home/maw276/magic_mirror_demo/messages/quote/ca.crt"},
+            tls={"ca_certs": "/home/maw276/magic_mirror_demo/messages/quote/ca.crt"},
         )
 
         time.sleep(600)
         quote_type += 1
+        if quote_type == 2 and quote_index == 3:
+            break
     quote_index += 1
