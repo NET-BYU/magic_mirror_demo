@@ -65,7 +65,7 @@ for i in l:
     time = j[i]["StartDateTime"]
     t = "immerse/event/date/"+str(i)
     m = formatDate(time)
-    client.publish(t,m,qos=1retain=True)
+    client.publish(t,m,qos=1,retain=True)
     t = "immerse/event/location/"+str(i)
     m = j[i]["LocationName"]
     client.publish(t,m,qos=1,retain=True)
