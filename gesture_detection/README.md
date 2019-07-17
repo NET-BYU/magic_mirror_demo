@@ -14,8 +14,11 @@ Here is a list of all keys, and what their values do:
 The default configurations of the hardware are:
 
 ProxSensor Vcc Pin ---- RasPi 5V (Can use Pin # 02)
+
 ProxSensor Trig Pin ---- RasPi GPIO4 (Pin # 07)
+
 ProxSensor Echo Pin ---- 330 Ohm Resistor ---- RasPi GPIO17 (Pin # 11) ---- 470 Ohm Resistor --- RasPi GND (Can use Pin # 09)
+
 ProxSensor GND Pin --- RasPi GND (Can use Pin # 06)
 
 Our custom Raspberry Pi Hat uses this default schematic (TODO: Insert picture of hat). However, you can also simply use jumpers and a breadboard, then you can choose whichever pins are most convenient.
