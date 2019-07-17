@@ -61,14 +61,14 @@ def formatDate(time):
 for i in l:
     t = "immerse/event/title/"+str(i)
     m = j[i]["Title"]
-    client.publish(t,m,qos=0,retain=False)
+    client.publish(t,m,qos=1,retain=True)
     time = j[i]["StartDateTime"]
     t = "immerse/event/date/"+str(i)
     m = formatDate(time)
-    client.publish(t,m,qos=0,retain=False)
+    client.publish(t,m,qos=1retain=True)
     t = "immerse/event/location/"+str(i)
     m = j[i]["LocationName"]
-    client.publish(t,m,qos=0,retain=False)
+    client.publish(t,m,qos=1,retain=True)
 
 
 
