@@ -8,7 +8,9 @@ This module runs independently from all other code running on the Raspberry Pi. 
 ## Software Configurations
 All configurations should be saved in the file config.json. If no config file exists, then the default configurations will be used. An example config file with the default configurations is included.
 Here is a list of all keys, and what their values do:
-"max_distance" - 
+**max_distance** - Default is 2 meters. After anything moves beyond this range, or nothing is detected, the sensor will default the measurement to this value. 
+**threshold_distance** - Default is 1 meter. This means that when something moves within the threshold distance, the *Person Detected* event will be triggered (activating the mirror). When a person or object leaves the threshold, a *Person No Longer Detected* event will be triggered (activating the mirror if a person isn't detected for a certain amount of time).
+**time_before_sleep** - Default is 10 seconds. When a *Person No Longer Detected* event is triggered, a timer will be set to this value and begin to count down. If the timer reaches 0 before a *Person Detected* event happens, then the mirror will go sleep mode, or a blank screen will be shown. 
 
 ## Hardware Assembly
 The default configurations of the hardware are:
@@ -23,14 +25,14 @@ ProxSensor GND Pin --- RasPi GND (Can use Pin # 06)
 
 Our custom Raspberry Pi Hat uses this default schematic (TODO: Insert picture of hat). However, you can also simply use jumpers and a breadboard, then you can choose whichever pins are most convenient.
 
-For a graphical explanation, we use the same configuration as shown on the following raspberry pi project page:
+For a graphical explanation of how everything connects, see "The breadboard jumper method" or "The custom Raspberry Pi Hat"
+
+### The breadboard jumper method
+We use the same configuration as shown on the following raspberry pi project page:
 
 ![Proximity Sensor Schematic](images/wiring-uds.png)
 
 https://projects.raspberrypi.org/en/projects/physical-computing/13
-
-### The breadboard jumper method
-(TODO add later)
 
 ### The custom Raspberry Pi Hat
 (TODO finish later) You need a 3cmx7cm protoboard, a 
