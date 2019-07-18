@@ -29,6 +29,8 @@
 #     # broker access information
 #     hostname="postman.cloudmqtt.com", # address??
 #     port=27408,
+#     retain=True,
+#     qos=1,
 #     auth={"username": "messages", "password": "yMk7upKt2dcGEao3u2uxvXC4KnQRL224"},
 #     tls={"ca_certs": "/home/maw276/magic_mirror_demo/messages/quote/ca.crt"},
 # )
@@ -39,6 +41,8 @@
 #     # broker access information
 #     hostname="postman.cloudmqtt.com", # address??
 #     port=27408,
+#     retain=True,
+#     qos=1,
 #     auth={"username": "messages", "password": "yMk7upKt2dcGEao3u2uxvXC4KnQRL224"},
 #     tls={"ca_certs": "/home/maw276/magic_mirror_demo/messages/quote/ca.crt"},
 # )
@@ -80,6 +84,8 @@ while quote_index < 4:
             quote_text,
             hostname="postman.cloudmqtt.com",
             port=27408,
+            retain=True,
+            qos=1,
             auth={"username": "messages", "password": "yMk7upKt2dcGEao3u2uxvXC4KnQRL224"},
             tls={"ca_certs": "/home/maw276/magic_mirror_demo/messages/quote/ca.crt"},
         )
@@ -88,6 +94,8 @@ while quote_index < 4:
             author,
             hostname="postman.cloudmqtt.com",
             port=27408,
+            retain=True,
+            qos=1,
             auth={"username": "messages", "password": "yMk7upKt2dcGEao3u2uxvXC4KnQRL224"},
             tls={"ca_certs": "/home/maw276/magic_mirror_demo/messages/quote/ca.crt"},
         )
