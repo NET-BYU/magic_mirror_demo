@@ -16,6 +16,14 @@ Here is a list of all keys, and what their values do:
 **time_before_sleep** - Default is 10 seconds. When a *Person No Longer Detected* event is triggered, a timer will be set to this value and begin to count down. If the timer reaches 0 before a *Person Detected* event happens, then the mirror will switch to a blank screen. 
 
 ## Hardware Assembly
+Requirements:
+ * 1 Raspberry Pi (The same one running the Magic Mirror Display)
+ * 1 HC-SR04 Proximity Sensor
+ * 1 330 Ohm Resistor
+ * 1 470 Ohm Resistor
+ * Additional hardware requirements depend on which of 2 methods you choose, see "Method 1: Breadboard and jumpers" or "Method 2: The custom Raspberry Pi Hat".
+
+
 The default configurations of the hardware are:
 
 ProxSensor Vcc Pin ---- RasPi 5V (Can use Pin # 02)
@@ -26,14 +34,14 @@ ProxSensor Echo Pin ---- 330 Ohm Resistor ---- RasPi GPIO17 (Pin # 11) ---- 470 
 
 ProxSensor GND Pin --- RasPi GND (Can use Pin # 06)
 
-For a graphical explanation of how everything connects, see "The breadboard jumper method" or "The custom Raspberry Pi Hat"
+For a graphical explanation of how everything connects, see "Method 1: Breadboard and jumpers" or "Method 2: The custom Raspberry Pi Hat"
 
-### The breadboard jumper method
+### Method 1: Breadboard and jumpers
 We use the same configuration as shown on the following raspberry pi project page:
 
 ![Proximity Sensor Schematic](images/wiring-uds.png)
 
 https://projects.raspberrypi.org/en/projects/physical-computing/13
 
-### The custom Raspberry Pi Hat
+### Method 2: The custom Raspberry Pi Hat
 (TODO finish later) You need a 3cmx7cm protoboard, a 
