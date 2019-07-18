@@ -24,15 +24,11 @@ Requirements:
  * Additional hardware requirements depend on which of 2 methods you choose, see "Method 1: Breadboard and jumpers" or "Method 2: The custom Raspberry Pi Hat".
 
 
-The default configurations of the hardware are:
-
-ProxSensor Vcc Pin ---- RasPi 5V (Can use Pin # 02)
-
-ProxSensor Trig Pin ---- RasPi GPIO4 (Pin # 07)
-
-ProxSensor Echo Pin ---- 330 Ohm Resistor ---- RasPi GPIO17 (Pin # 11) ---- 470 Ohm Resistor --- RasPi GND (Can use Pin # 09)
-
-ProxSensor GND Pin --- RasPi GND (Can use Pin # 06)
+The default configurations of the hardware are ("----" represents a connecting wire):
+ * ProxSensor Vcc Pin ---- RasPi 5V (Can use Pin # 02)
+ * ProxSensor Trig Pin ---- RasPi GPIO4 (Pin # 07)
+ * ProxSensor Echo Pin ---- 330 Ohm Resistor ---- RasPi GPIO17 (Pin # 11) ---- 470 Ohm Resistor --- RasPi GND (Can use Pin # 09)
+ * ProxSensor GND Pin --- RasPi GND (Can use Pin # 06)
 
 For a graphical explanation of how everything connects, see "Method 1: Breadboard and jumpers" or "Method 2: The custom Raspberry Pi Hat"
 
