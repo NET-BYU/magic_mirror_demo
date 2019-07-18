@@ -23,7 +23,8 @@ ProxSensor GND Pin --- RasPi GND (Can use Pin # 06)
 
 Our custom Raspberry Pi Hat uses this default schematic (TODO: Insert picture of hat). However, you can also simply use jumpers and a breadboard, then you can choose whichever pins are most convenient.
 
-![Proximity Sensor Schematic](https://projects-static.raspberrypi.org/projects/physical-computing/5df9593a3ce6f0df1ad3c39a73c3434f7ee70481/en/images/wiring-uds.png)
+For a graphical explanation, we use the same configuration as shown on the following raspberry pi project page:
+![Proximity Sensor Schematic](/images/wiring-uds.png)
 https://projects.raspberrypi.org/en/projects/physical-computing/13
 
 ### The breadboard jumper method
