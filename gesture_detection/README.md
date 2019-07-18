@@ -11,7 +11,7 @@ Here is a list of all keys, and what their values do:
 
 **max_distance** - Default is 2 meters. After anything moves beyond this range, or nothing is detected, the sensor will default the measurement to this value. 
 
-**threshold_distance** - Default is 1 meter. This means that when something moves within the threshold distance, the *Person Detected* event will be triggered (activating the mirror). When a person or object leaves the threshold, a *Person No Longer Detected* event will be triggered (activating the mirror if a person isn't detected for a certain amount of time).
+**threshold_distance** - Default is 1 meter. This means that when something moves within the threshold distance, the *Person Detected* event will be triggered (activating the mirror). When a person or object leaves the threshold, a *Person No Longer Detected* event will be triggered (deactivating the mirror if a person isn't detected for a certain amount of time).
 
 **time_before_sleep** - Default is 10 seconds. When a *Person No Longer Detected* event is triggered, a timer will be set to this value and begin to count down. If the timer reaches 0 before a *Person Detected* event happens, then the mirror will switch to a blank screen. 
 
