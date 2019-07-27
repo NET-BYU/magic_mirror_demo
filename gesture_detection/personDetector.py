@@ -1,7 +1,8 @@
 from gpiozero import DistanceSensor
 import time
+import pynput
 
-# NOTE - This code is not finished and still needs to (1) Simulate keypresses (2) Read from a config.json file to allow configuration
+# TODO - (1) Simulate keypresses (2) Read from a config.json file to allow configuration
 
 def activate_mirror():
 	print("Mirror Activated")
