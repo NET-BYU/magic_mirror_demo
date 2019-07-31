@@ -1,0 +1,8 @@
+{
+    "echo_pin" : 17,
+    "trigger_pin" : 4,
+    "max_dist" : 2,
+    "threshold_dist" : 1,
+    "activate_key" : " ",
+    "deactivate_key" : "h"
+}
