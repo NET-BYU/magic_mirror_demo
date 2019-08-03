@@ -36,7 +36,7 @@ class Help(Gtk.VBox):
                           "[c]\t or <equivalent gesture> shows the calendar events\n"
                           "[F1]\t or <equivalent gesture> shows this help screen\n"
                           "[i]\t or <equivalent gesture> shows the About screen\n"
-                          "[m]\t or <equivalent gesture> shows a blank screen for mirror purposes\n"
+                          "[n]\t or <equivalent gesture> shows a blank screen for mirror purposes\n"
                           "[Left]\t or <equivalent gesture> cycles through app screens forwards\n"
                           "[Right]\t or <equivalent gesture> cycle through app screens backwards\n"
                           "[Up]\t or <equivalent gesture> cycle through calendar events\n"
