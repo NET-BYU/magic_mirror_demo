@@ -1,1 +1,26 @@
-{"quote": [{"author": "Karl G. Maeser", "quote_text": "\"I'm honest, etc.\""}, {"author": "Colin Powell", "quote_text": "\u201cThere are no secrets to success. It is the result of preparation, hard work and learning from failure.\u201d"}, {"author": "Russel M. Nelson", "quote_text": "\"We can do better and be better.\""}, {"author": "Winston Churchill", "quote_text": "\"Success consists of going from failure to failure without loss of enthusiasm.\""}]}
+[
+    {
+        "author": "Karl G. Maeser",
+        "quote_text": "\"I am honest, etc.\""
+    },
+    {
+        "author": "Colin Powell",
+        "quote_text": "\"There are no secrets to success. It is the result of preparation, hard work and learning from failure.\""
+    },
+    {
+        "author": "Russel M. Nelson",
+        "quote_text": "\"We can do better and be better\""
+    },
+    {
+        "author": "Winston Churchill",
+        "quote_text": "\"Success consists of going from failure to failure without loss of enthusiasm.\""
+    },
+    {
+        "author": "Maya Angelou",
+        "quote_text": "\"My mission in life is not merely to survive, but to thrive; and to do so with some passion, some compassion, some humor, and some style.\""
+    },
+    {
+        "author": "Theodore Roosevelt",
+        "quote_text": "\"To educate a person in the mind but not in morals is to educate a menace to society.\""
+    }
+]
