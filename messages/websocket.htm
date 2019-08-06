@@ -131,15 +131,12 @@ width: 50%;
 
 	}
 
-
+	var json_begin = "{\"message\" :";
+	var json_end = "}"; 
 
 	function send_message_cal(){
 
-		var msg = "calendar";
-
-		console.log(msg);
-
-
+		var msg = json_begin.concat(" \"calendar\"",json_end);
 
 		var topic = "immerse/messages";
 
@@ -155,11 +152,7 @@ width: 50%;
 	
 	function send_message_quote(){
 
-		var msg = "quotes";
-
-		console.log(msg);
-
-
+		var msg = json_begin.concat(" \"quote\"",json_end);
 
 		var topic = "immerse/messages";
 
@@ -175,12 +168,8 @@ width: 50%;
 	
 	function send_message_weather(){
 
-		var msg = "weather";
-
-		console.log(msg);
-
-
-
+		var msg = json_begin.concat(" \"weather\"",json_end);
+		
 		var topic = "immerse/messages";
 
 		message = new Paho.MQTT.Message(msg);
@@ -194,13 +183,9 @@ width: 50%;
 	}
 	
 	function send_message_home(){
-
-		var msg = "home";
-
-		console.log(msg);
-
-
-
+		
+		var msg = json_begin.concat(" \"home\"",json_end);
+		
 		var topic = "immerse/messages";
 
 		message = new Paho.MQTT.Message(msg);
@@ -215,12 +200,8 @@ width: 50%;
 	
 	function send_message_info(){
 
-		var msg = "info";
-
-		console.log(msg);
-
-
-
+		var msg = json_begin.concat(" \"info\"",json_end);
+			
 		var topic = "immerse/messages";
 
 		message = new Paho.MQTT.Message(msg);
@@ -235,12 +216,8 @@ width: 50%;
 	
 	function send_message_heart(){
 
-		var msg = "heart";
-
-		console.log(msg);
-
-
-
+		var msg = json_begin.concat(" \"heart\"",json_end);
+		
 		var topic = "immerse/messages";
 
 		message = new Paho.MQTT.Message(msg);
@@ -255,12 +232,8 @@ width: 50%;
 	
 	function send_message_smile(){
 
-		var msg = "smile";
-
-		console.log(msg);
-
-
-
+		var msg = json_begin.concat(" \"smile\"",json_end);
+		
 		var topic = "immerse/messages";
 
 		message = new Paho.MQTT.Message(msg);
@@ -279,11 +252,9 @@ width: 50%;
 
         if(p == "immerse") {
 
-            var msg = document.forms["p"]["mess"].value;
-
-		    console.log(msg);
-
-
+            var val = document.forms["p"]["mess"].value;
+			
+			var msg = json_begin.concat(" \"",val,"\"",json_end);
 
 		    var topic = "immerse/messages";
 
