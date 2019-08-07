@@ -7,7 +7,7 @@
 import paho.mqtt.publish as publish
 import json
 import time
-while true
+while True:
     with open('quotes_list.txt') as json_file:
         quotes = json.load(json_file)
         for quote in quotes:
