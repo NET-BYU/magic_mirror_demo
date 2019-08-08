@@ -32,6 +32,10 @@
         "quote_text": "\"My mission in life is not merely to survive, but to thrive; and to do so with some passion, some compassion, some humor, and some style.\""
     },
     {
+        "author": "Unknown",
+        "quote_text": "\"To the optimist, the glass is half full. To the pessimist, the glass is half empty. To the engineer, the glass is twice as big as it needs to be.\""
+    },
+    {
         "author": "Jeffrey R. Holland",
         "quote_text": "\"If for a while the harder you try, the harder it gets, take heart. So it has been with the best people who ever lived.\""
     },
@@ -98,6 +102,10 @@
     {
         "author": "Dalai Lama",
         "quote_text": "\"Be kind whenever possible. It is always possible.\""
+    },
+    {
+        "author": "Unknown",
+        "quote_text": "\"To the optimist, the glass is half full. To the pessimist, the glass is half empty. To the engineer, the glass is twice as big as it needs to be.\""
     },
     {
         "author": "Benjamin Franklin",

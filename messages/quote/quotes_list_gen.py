@@ -50,6 +50,11 @@ quote = {
 }
 quotes.append(quote)
 quote = {
+    "author": "Unknown",
+    "quote_text": "\"To the optimist, the glass is half full. To the pessimist, the glass is half empty. To the engineer, the glass is twice as big as it needs to be.\"",
+}
+quotes.append(quote)
+quote = {
     "author": "Jeffrey R. Holland",
     "quote_text": "\"If for a while the harder you try, the harder it gets, take heart. So it has been with the best people who ever lived.\"",
 }
@@ -132,6 +137,11 @@ quotes.append(quote)
 quote = {
     "author": "Dalai Lama",
     "quote_text": "\"Be kind whenever possible. It is always possible.\"",
+}
+quotes.append(quote)
+quote = {
+    "author": "Unknown",
+    "quote_text": "\"To the optimist, the glass is half full. To the pessimist, the glass is half empty. To the engineer, the glass is twice as big as it needs to be.\"",
 }
 quotes.append(quote)
 quote = {
