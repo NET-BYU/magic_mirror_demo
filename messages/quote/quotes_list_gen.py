@@ -10,7 +10,6 @@ import json
 
 quotes = []
 quote = {
-<<<<<<< HEAD
     "author": "Karl G. Maeser",
     "quote_text": "\"Be yourself, but always your better self.",
 }
@@ -83,6 +82,116 @@ quotes.append(quote)
 quote = {
     "author": "Sheri L. Dew",
     "quote_text": "\"There is one thing the power of God and the power of Satan have in common: Neither can influence us unless we allow them to.\"",
+}
+quotes.append(quote)
+quote = {
+    "author": "Alexander Hamilton",
+    "quote_text": "\"Those who stand for nothing fall for everything.\"",
+}
+quotes.append(quote)
+quote = {
+    "author": "Mother Teresa",
+    "quote_text": "\"If you judge people, you have no time to love them.\"",
+}
+quotes.append(quote)
+quote = {
+    "author": "Albert Einstein",
+    "quote_text": "\"I have no special talent. I am only passionately curious.\"",
+}
+quotes.append(quote)
+quote = {
+    "author": "William Shakespeare",
+    "quote_text": "\"To thine own self be true, and it must follow, as the night the day, thou canst not then be false to any man.\"",
+}
+quotes.append(quote)
+quote = {
+    "author": "Plato",
+    "quote_text": "\"The greatest wealth is to live content with little.\"",
+}
+quotes.append(quote)
+quote = {
+    "author": "Nelson Mandela",
+    "quote_text": "\"It always seems impossible until it\’s done.\"",
+}
+quotes.append(quote)
+quote = {
+    "author": "Anne Frank",
+    "quote_text": "\"I don\’t think of all the misery but of the beauty that still remains.\"",
+}
+quotes.append(quote)
+quote = {
+    "author": "J.R.R. Tolkien",
+    "quote_text": "\"Little by little, one travels far.\"",
+}
+quotes.append(quote)
+quote = {
+    "author": "William Shakespeare",
+    "quote_text": "\"Love all, trust a few, do wrong to none.\"",
+}
+quotes.append(quote)
+quote = {
+    "author": "Dalai Lama",
+    "quote_text": "\"Be kind whenever possible. It is always possible.\"",
+}
+quotes.append(quote)
+quote = {
+    "author": "Benjamin Franklin",
+    "quote_text": "\"By failing to prepare, you are preparing to fail.\"",
+}
+quotes.append(quote)
+quote = {
+    "author": "Michael Scott",
+    "quote_text": "\"You miss 100 percent of the shots you never take. - Wayne Gretzky\"",
+}
+quotes.append(quote)
+quote = {
+    "author": "Nelson Mandela",
+    "quote_text": "\"Education is the most powerful weapon which you can use to change the world.\"",
+}
+quotes.append(quote)
+quote = {
+    "author": "Thomas A. Edison",
+    "quote_text": "\"Genius is one percent inspiration, ninety-nine percent perspiration. \"",
+}
+quotes.append(quote)
+quote = {
+    "author": "Elton John",
+    "quote_text": "\"Better to build a bridge than a wall.\"",
+}
+quotes.append(quote)
+quote = {
+    "author": "Elon Musk",
+    "quote_text": "\"I would like to die on Mars. Just not on impact.\"",
+}
+quotes.append(quote)
+quote = {
+    "author": "Dieter F. Uchtdorf",
+    "quote_text": "\"Though we are incomplete, God loves us completely. Though we are imperfect, He loves us perfectly. Though we may feel lost and without compass, God's love encompasses us completely. ... He loves every one of us, even those who are flawed, rejected, awkward, sorrowful, or broken.\"",
+}
+quotes.append(quote)
+quote = {
+    "author": "Dieter F. Uchtdorf",
+    "quote_text": "\"The happiest people I know are not those who find their golden ticket; they are those who, while in pursuit of worthy goals, discover and treasure the beauty and sweetness of the everyday moments.\"",
+}
+quotes.append(quote)
+quote = {
+    "author": "David A. Bednar",
+    "quote_text": "\"To be offended is a choice we make; it is not a condition inflicted or imposed upon us by someone or something else.\"",
+}
+quotes.append(quote)
+quote = {
+    "author": "Dallin H. Oaks",
+    "quote_text": "\"You can never get enough of what you don\'t need, because what you don't need won't satisfy you.\"",
+}
+quotes.append(quote)
+quote = {
+    "author": "Dallin H. Oaks",
+    "quote_text": "\"It\'s amazing how much you can get done if you don\'t worry about who gets the credit.\"",
+}
+quotes.append(quote)
+quote = {
+    "author": "Dallin H. Oaks",
+    "quote_text": "\"Testimony is to know and to feel; Conversion is to do and to become.\"",
 }
 quotes.append(quote)
 quote = {
@@ -178,7 +287,9 @@ quotes.append(quote)
 quote = {
     "author": "Thomas S. Monson",
     "quote_text": "\"Whether it is the best of times or the worst of times, He is with us. He has promised that this will never change.\"",
-=======
+    }
+quotes.append(quote)
+quote = {
     "author": 'Karl G. Maeser',
     "quote_text": '"Be yourself, but always your better self."',
 }
@@ -346,7 +457,6 @@ quotes.append(quote)
 quote = {
     "author": 'Thomas S. Monson',
     "quote_text": '"Whether it is the best of times or the worst of times, He is with us. He has promised that this will never change."',
->>>>>>> 40d43daaa93935265de0ce19aac9433d83ac2c54
 }
 quotes.append(quote)
 
