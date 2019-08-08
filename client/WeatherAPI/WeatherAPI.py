@@ -63,6 +63,21 @@ class Weather:
         self.get_weather()
         return self.data['main']['humidity']
 
+    def get_update(self):
+        self.get_weather()
+        weather = dict()
+        weather['temp'] = self.data["main"]["temp"]
+        weather['condition'] = self.data['weather'][0]['main']
+        weather['sunrise'] = self.data['sys']['sunrise']
+        weather['sunset'] = self.data['sys']['sunset']
+        weather['cloud_cover'] = self.data['clouds']['all']
+        weather['wind_speed'] = self.data['wind']['speed']
+        weather['humidity'] = self.data['main']['humidity']
+        weather['id'] = self.data['weather'][0]['id']
+        weather['description'] = self.data['weather'][0]['description']
+        weather['icon'] = self.data['weather'][0]['icon']
+        return weather
+
 if __name__ == "__main__":
     weather = Weather()
     print("Current Weather")

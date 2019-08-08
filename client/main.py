@@ -1,9 +1,9 @@
 import paho.mqtt.client as mqtt
 
-from client.WeatherAPI.WeatherAPI import Weather
+from Client.WeatherAPI.WeatherAPI import Weather
 
 import time
-
+import json
 
 
 
@@ -36,7 +36,8 @@ class main:
     def run(self):
         # self.client.loop_forever()
         while True:
-            self.get_all()
+            # self.get_all()
+            self.get_weather()
             time.sleep(600)
             pass
         pass
@@ -80,42 +81,48 @@ class main:
         return switcher[topic]
 
     def get_all(self):
-        self.get_weather()
-        self.get_condition()
-        self.get_sunrise()
-        self.get_sunset()
-        self.get_cloud_cover()
-        self.get_wind_speed()
-        self.get_humidity()
+        # self.get_temperature()
+        # self.get_condition()
+        # self.get_sunrise()
+        # self.get_sunset()
+        # self.get_cloud_cover()
+        # self.get_wind_speed()
+        # self.get_humidity()
+        pass
 
     def get_weather(self):
+        conditions = self.weather.get_update()
+        temp = json.dumps(conditions)
+        self.client.publish("immerse/Weather/Update", temp, 0, retain=True)
+
+    def get_temperature(self):
         temp = self.weather.get_temp()
-        self.client.publish("immerse/Weather/Temp", temp, 0)
+        self.client.publish("immerse/Weather/Temp", temp, 0, retain=True)
         return temp
 
     def get_condition(self):
         condition = self.weather.get_condition()
-        self.client.publish("immerse/Weather/Condition", condition, 0)
+        self.client.publish("immerse/Weather/Condition", condition, 0, retain=True)
 
     def get_sunrise(self):
         sunrise = self.weather.get_sunrise()
-        self.client.publish("immerse/Weather/Sunrise", sunrise, 0)
+        self.client.publish("immerse/Weather/Sunrise", sunrise, 0, retain=True)
 
     def get_sunset(self):
         sunset = self.weather.get_sunset()
-        self.client.publish("immerse/Weather/Sunset", sunset, 0)
+        self.client.publish("immerse/Weather/Sunset", sunset, 0, retain=True)
 
     def get_cloud_cover(self):
         cloud_cover = self.weather.get_cloud_cover()
-        self.client.publish("immerse/Weather/Clouds", cloud_cover, 0)
+        self.client.publish("immerse/Weather/Clouds", cloud_cover, 0, retain=True)
 
     def get_wind_speed(self):
         wind_speed = self.weather.get_wind_speed()
-        self.client.publish("immerse/Weather/Wind_Speed", wind_speed, 0)
+        self.client.publish("immerse/Weather/Wind_Speed", wind_speed, 0, retain=True)
 
     def get_humidity(self):
         humidity = self.weather.get_humidity()
-        self.client.publish("immerse/Weather/Humidity", humidity, 0)
+        self.client.publish("immerse/Weather/Humidity", humidity, 0, retain=True)
 
 
 if __name__ == '__main__':
