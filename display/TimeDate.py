@@ -24,7 +24,7 @@ class TimeDate(Gtk.VBox):
         self.title.set_text(time)
         self.date_text.set_text(date_str)
 
-        timedesc = Pango.FontDescription("AnjaliOldLipi Bold 150")
+        timedesc = Pango.FontDescription("AnjaliOldLipi Bold 130")
         self.title.override_font(timedesc)
         self.title.override_color(Gtk.StateFlags.NORMAL, Gdk.RGBA(255, 255, 255, 1.0))
 
@@ -43,7 +43,7 @@ class TimeDate(Gtk.VBox):
         logo_image.set_from_pixbuf(IMG.timepix)
 
         time = str(datetime.now().strftime("%-I:%M:%S %p"))
-        date_str = str(datetime.now().strftime("%A %b %d, %Y"))
+        date_str = str(datetime.now().strftime("%A %b %-d, %Y"))
 
         self.title.set_text(time)
         self.date_text.set_text(date_str)

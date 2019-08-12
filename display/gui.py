@@ -2,13 +2,13 @@ from gi import require_version
 require_version('Gtk', '3.0')
 from gi.repository import Gtk, Gdk, GObject
 from Auth import Auth
-from Calendar import Calendar
 from Help import Help
 from Home import Home
 from Info import Info
-from Messages import Messages
+from Messages import Messages, MessageData
 from Mirror import Mirror
 from Quote import QuoteData, Quote
+from Calendar import Calendar, EventData
 from TimeDate import TimeDate
 from WeatherData import WeatherData, Weather
 import threading
@@ -26,36 +26,43 @@ class MainWindow(Gtk.Window):
         # Data classes which update from subscriber
         weather_data = WeatherData()
         quote_data = QuoteData()
+        calendar_data = EventData()
+        message_data = MessageData()
 
         # Screen objects that are cycled in the window
-        # self.home_screen = Home()
+        self.home_screen = Home(weather_data, calendar_data)
         self.auth_screen = Auth()
         self.weather_screen = Weather(weather_data)
         self.time_screen = TimeDate()
-        self.message_screen = Messages()
+        self.message_screen = Messages(message_data)
         self.quote_screen = Quote(quote_data)
-        # self.calendar_screen = Calendar()
+        self.calendar_screen = Calendar(calendar_data)
         self.help_screen = Help()
         self.info_screen = Info()
         self.mirror_screen = Mirror()
 
         # Starts the MQTT subscriber
-        data_thread = threading.Thread(target=subscriber.run, args=([weather_data, quote_data],))
+        data_thread = threading.Thread(target=subscriber.run, args=([weather_data, quote_data, calendar_data],))
         data_thread.start()
 
         # Updates the value on the screens in separate threads
         GObject.timeout_add(1000, self.weather_screen.update_weather)
         GObject.timeout_add(1000, self.time_screen.update_clock)
         GObject.timeout_add(1000, self.quote_screen.update)
+        GObject.timeout_add(1000, self.calendar_screen.update_events)
+        GObject.timeout_add(1000, self.message_screen.update_screen)
+        GObject.timeout_add(1000, self.home_screen.update_home)
 
         self.app_stack = Gtk.Stack()
         self.app_stack.set_transition_type(Gtk.StackTransitionType.SLIDE_LEFT_RIGHT)
         self.app_stack.set_transition_duration(500)
 
+        self.app_stack.add_named(self.home_screen, "Home")
         self.app_stack.add_named(self.weather_screen, "Weather")
         self.app_stack.add_named(self.time_screen, "Time")
         self.app_stack.add_named(self.message_screen, "Message")
         self.app_stack.add_named(self.quote_screen, "Quote")
+        self.app_stack.add_named(self.calendar_screen, "Calendar")
         self.app_stack.add_named(self.help_screen, "Help")
         self.app_stack.add_named(self.info_screen, "Info")
         self.app_stack.add_named(self.mirror_screen, "Mirror")
@@ -65,18 +72,19 @@ class MainWindow(Gtk.Window):
 
         self.fullscreen()
         self.modify_bg(Gtk.StateType.NORMAL, Gdk.Color(255, 255, 255))
-        self.set_default_size(500, 500)
+        # self.set_default_size(500, 500)
         self.set_icon(IMG.iconpix)
 
     def do_key_press_event(self, event):
         Gtk.Window.do_key_press_event(self, event)
+        event_state = 0
         if event.keyval == Gdk.KEY_Escape:
             self.unfullscreen()
         elif event.keyval == Gdk.KEY_F11:
             self.fullscreen()
         elif event.keyval == Gdk.KEY_h and self.state is not self.state_list[0]:
             self.state = "HOME"
-            self.app_stack.set_visible_child_name("Home")
+            self.app_stack.set_visible_child_full("Home", Gtk.StackTransitionType.CROSSFADE)
         elif event.keyval == Gdk.KEY_w and self.state is not self.state_list[1]:
             self.state = "WEATHER"
             self.app_stack.set_visible_child_full("Weather", Gtk.StackTransitionType.CROSSFADE)
@@ -146,7 +154,20 @@ class MainWindow(Gtk.Window):
                 self.state = self.state_list[1]
                 self.app_stack.set_visible_child_full("Weather", Gtk.StackTransitionType.SLIDE_LEFT_RIGHT)
         elif (event.keyval == Gdk.KEY_Up) and (self.state is "CALENDAR"):
-            print("derpaflerp")
+            event_state += 1
+            if event_state > len(self.calendar_screen.event_stack.get_children()):
+                event_state = 0
+            name = self.calendar_screen.event_stack.get_children()[event_state].title
+            self.calendar_screen.event_stack.set_visible_child_full(name, Gtk.StackTransitionType.SLIDE_UP_DOWN)
+            print("ev state", event_state)
+        elif (event.keyval == Gdk.KEY_Down) and (self.state is "CALENDAR"):
+            event_state -= 1
+            if event_state < 0:
+                event_state = len(self.calendar_screen.event_stack.get_children()) - 1
+            name = self.calendar_screen.event_stack.get_children()[event_state].title
+            self.calendar_screen.event_stack.set_visible_child_full(name, Gtk.StackTransitionType.SLIDE_UP_DOWN)
+            print("ev state", event_state)
+
 
 
 def main():

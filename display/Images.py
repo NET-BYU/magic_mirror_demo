@@ -66,15 +66,13 @@ home_infopix = GdkPixbuf.Pixbuf.new_from_file_at_scale(infoimg, -1, 128, True)
 home_messagespix = GdkPixbuf.Pixbuf.new_from_file_at_scale(messagesimg, -1, 128, True)
 home_quotepix = GdkPixbuf.Pixbuf.new_from_file_at_scale(quoteimg, -1, 128, True)
 home_timepix = GdkPixbuf.Pixbuf.new_from_file_at_scale(timeimg, -1, 128, True)
-home_calendarpix = GdkPixbuf.Pixbuf.new_from_file_at_scale(calendarimg, -1, 128, True)
+home_calendarpix = GdkPixbuf.Pixbuf.new_from_file_at_scale(calendarimg, -1, 50, True)
 
 # Direction arrows
 uppix = GdkPixbuf.Pixbuf.new_from_file_at_scale(up_img, -1, 50, True)
 downpix = GdkPixbuf.Pixbuf.new_from_file_at_scale(down_img, -1, 50, True)
 
 # Home Screen Status Bar
-status_message_sing_pix = GdkPixbuf.Pixbuf.new_from_file_at_scale(message, -1, 50, True)
-status_message_plu_pix = GdkPixbuf.Pixbuf.new_from_file_at_scale(messagesimg, -1, 50, True)
 status_severepix = GdkPixbuf.Pixbuf.new_from_file_at_scale(severe_img, -1, 50, True)
 status_brokencloudspix = GdkPixbuf.Pixbuf.new_from_file_at_scale(broken_clouds_img, -1, 50, True)
 status_cleardaypix = GdkPixbuf.Pixbuf.new_from_file_at_scale(clear_day_img, -1, 50, True)
