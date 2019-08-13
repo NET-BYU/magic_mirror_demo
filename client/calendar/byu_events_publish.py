@@ -7,7 +7,7 @@ import calendar
 
 now = datetime.datetime.now()
 today = now.strftime("%Y-%m-%d")
-endDate = datetime.datetime.now() + datetime.timedelta(days=3)
+endDate = datetime.datetime.now() + datetime.timedelta(days=20)
 n = endDate.strftime("%Y-%m-%d")
 
 res = requests.get('https://calendar.byu.edu/api/Events.json?categories=all&event[min][date]='+ today +'&event[max][date]='+ n)
@@ -51,32 +51,27 @@ def formatDate(time):
     monthFormatted = months[month]
     newtime = dayOfWeek + ", " + monthFormatted + " " + str(day)
     return newtime
-m = "{\"Title\" : {"
+m = "["
 for i in l:
-    m += str(i)
+    m += "{\"Title\""
     m += " : \""
     m += j[i]["Title"]
-    if(i != 3): 
-        m +="\", "
-m += "\"}, \"Time\" : {"
-for h in l:
-    m += str(h)
-    m += " : \""
-    time = j[h]["StartDateTime"]
+    m += "\", \"Time\" : \""
+    time = j[i]["StartDateTime"]
     m += formatDate(time)
-    if(h != 3): 
-        m +="\", "
-m += "\"}, \"Location\" : {"
-for k in l:
-    m += str(k)
-    m += " : \""
-    m += j[k]["LocationName"]
-    if(k != 3): 
-        m +="\", "
-m += "\"}"
+    m += "\", \"Location\" : \""
+    b = j[i]["LocationName"]
+    if(b is None):
+        m += "null"
+    else:
+        m += j[i]["LocationName"]
+    if (i == l):
+        m += "\"}"
+    else:    
+        m += "\"}, "
+m += "]"
 t = "immerse/event"
 client.publish(t,m,qos=1,retain=True)
-
 
 
 

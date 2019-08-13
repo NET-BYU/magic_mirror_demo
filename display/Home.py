@@ -2,55 +2,82 @@ from gi import require_version
 require_version('Gtk', '3.0')
 from gi.repository import Gtk, Gdk, Pango
 from datetime import datetime
-from dateutil import tz
-from time import sleep, time
 import Images as IMG
 
 
 class Home(Gtk.VBox):
-    def __init__(self, weather, temp, unread, cal_event):
+    def __init__(self, weather_data, calendar_data):
         Gtk.VBox.__init__(self)
 
-        self.weather = weather
-        self.temp = temp
-        self.unread = unread
-        self.cal_event = cal_event
+        self.cal_data = calendar_data
+        self.weather_data = weather_data
+
+        self.weather_img = Gtk.Image()
+        self.weather_temp = Gtk.Label()
+
+        self.cal_img = Gtk.Image()
+        self.cal_time = Gtk.Label()
+        self.cal_title = Gtk.Label()
+
+        self.timedate_time = Gtk.Label()
+        self.timedate_date = Gtk.Label()
 
         self.create_screen()
 
     def create_screen(self):
         center = Gtk.VBox()
+
         weatherbox = Gtk.HBox()
-        messagebox = Gtk.HBox()
-        status_bar = Gtk.HBox()
+        eventbox = Gtk.HBox()
+        eventdesc = Gtk.VBox()
+        timebox = Gtk.VBox()
+        statusbar = Gtk.HBox()
 
-        weather_image = Gtk.Image()
-        message_image = Gtk.Image()
+        self.weather_img.set_from_pixbuf(self.weather_data.image)
+        self.cal_img.set_from_pixbuf(IMG.home_calendarpix)
 
-        weather_image.set_from_pixbuf(self.weather)
-        if int(self.unread) == 1:
-            message_image.set_from_pixbuf(IMG.status_message_sing_pix)
-        elif int(self.unread) > 1:
-            message_image.set_from_pixbuf(IMG.status_message_plu_pix)
 
-        time = str(datetime.now().strftime("%-I:%M %p "))
-        date_str = str(datetime.now().strftime("%A %b %d, %Y"))
+        desc = Pango.FontDescription("AnjaliOldLipi Bold 15")
+        self.weather_temp.override_font(desc)
+        self.weather_temp.override_color(Gtk.StateFlags.NORMAL, Gdk.RGBA(255, 255, 255, 1.0))
+        self.cal_time.override_font(desc)
+        self.cal_time.override_color(Gtk.StateFlags.NORMAL, Gdk.RGBA(255, 255, 255, 1.0))
+        self.cal_title.override_font(desc)
+        self.cal_title.override_color(Gtk.StateFlags.NORMAL, Gdk.RGBA(255, 255, 255, 1.0))
+        self.timedate_date.override_font(desc)
+        self.timedate_date.override_color(Gtk.StateFlags.NORMAL, Gdk.RGBA(255, 255, 255, 1.0))
+        self.timedate_time.override_font(desc)
+        self.timedate_time.override_color(Gtk.StateFlags.NORMAL, Gdk.RGBA(255, 255, 255, 1.0))
 
-        time_label = Gtk.Label()
-        date_label = Gtk.Label()
-        temp_label = Gtk.Label()
-        messages_label = Gtk.Label()
-        calendar_label = Gtk.Label()
+        self.update_home()
 
-        time_label.set_text(time)
-        date_label.set_text(date_str)
-        temp_label.set_text("TEMP")
-        messages_label.set_text("1")
-        calendar_label.set_text("EVENT")
+        weatherbox.pack_start(self.weather_img, False, False, 0)
+        weatherbox.pack_start(self.weather_temp, False, False, 0)
 
-        tempdesc = Pango.FontDescription("AnjaliOldLipi Bold 30")
-        time_label.override_font(tempdesc)
-        time_label.override_color(Gtk.StateFlags.NORMAL, Gdk.RGBA(255, 255, 255, 1.0))
+        timebox.pack_start(self.timedate_time, False, False, 0)
+        timebox.pack_start(self.timedate_date, False, False, 0)
 
-        center.pack_end(time_label, False, True, 0)
+        eventdesc.pack_start(self.cal_title, False, False, 0)
+        eventdesc.pack_start(self.cal_time, False, False, 0)
+        eventbox.pack_start(self.cal_img, False, False, 0)
+        eventbox.pack_start(eventdesc, False, False, 0)
+
+        statusbar.pack_start(eventbox, True, True, 0)
+        statusbar.pack_start(timebox, True, True, 0)
+        statusbar.pack_start(weatherbox, True, True, 0)
+
+        center.pack_end(statusbar, False, False, 0)
+
         self.add(center)
+
+    def update_home(self):
+        self.timedate_date.set_text(str(datetime.now().strftime("%A %b %d, %Y")))
+        self.timedate_time.set_text(str(datetime.now().strftime("%-I:%M %p ")))
+
+        self.weather_temp.set_text(f"{round(self.weather_data.temperature, 1)} °F")
+        self.weather_img.set_from_pixbuf(self.weather_data.status_image)
+
+        self.cal_time.set_text(str(list(self.cal_data.events.keys())))
+        self.cal_title.set_text(str(list(self.cal_data.events.keys())))
+
+        return True

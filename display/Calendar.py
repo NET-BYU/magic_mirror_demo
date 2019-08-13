@@ -3,26 +3,90 @@ require_version('Gtk', '3.0')
 from gi.repository import Gtk, Gdk, Pango
 
 import Images as IMG
+import json
+
+
+class EventData:
+    def __init__(self):
+        self.events = {}
+        self.updated = False
+
+    def update(self, topic, payload):
+        try:
+            topic = topic.split("/")
+            if topic[1] != "event":
+                return
+
+            new_events = json.loads(payload)
+            self.events = {event['Title']: event for event in new_events}
+            self.updated = True
+
+        except Exception as e:
+            print("Something happened", e)
+
+
+class Event(Gtk.VBox):
+    def __init__(self, event_data):
+        Gtk.VBox.__init__(self)
+        self.event_data = event_data
+
+        self.title = self.event_data["Title"]
+        self.time = self.event_data["Time"]
+        self.location = self.event_data["Location"]
+
+        self.title_label = Gtk.Label()
+        self.time_label = Gtk.Label()
+        self.location_label = Gtk.Label()
+
+        self.create_screen()
+
+    def create_screen(self):
+        center = Gtk.VBox()
+
+        titledesc = Pango.FontDescription("AnjaliOldLipi Bold 35")
+        self.title_label.override_font(titledesc)
+        self.title_label.override_color(Gtk.StateFlags.NORMAL, Gdk.RGBA(255, 255, 255, 1.0))
+
+        datedesc = Pango.FontDescription("AnjaliOldLipi Bold 25")
+        self.time_label.override_font(datedesc)
+        self.time_label.override_color(Gtk.StateFlags.NORMAL, Gdk.RGBA(255, 255, 255, 1.0))
+
+        locdesc = Pango.FontDescription("AnjaliOldLipi Bold 25")
+        self.location_label.override_font(locdesc)
+        self.location_label.override_color(Gtk.StateFlags.NORMAL, Gdk.RGBA(255, 255, 255, 1.0))
+
+        self.title_label.set_text(self.title)
+        self.location_label.set_text(self.location)
+        self.time_label.set_text(self.time)
+
+        center.pack_start(self.title_label, True, False, 0)
+        center.pack_start(self.location_label, True, False, 0)
+        center.pack_start(self.time_label, True, False, 0)
+
+        self.add(center)
+
+    def update_event_data(self, event_data):
+        self.title = event_data["Title"]
+        self.time = event_data["Time"]
+        self.location = event_data["Location"]
+
+    def update_event(self):
+        self.title_label.set_text(self.title)
+        self.location_label.set_text(self.location)
+        self.time_label.set_text(self.time)
+
+        return True
 
 
 class Calendar(Gtk.VBox):
-    def __init__(self, t1, t2, t3, t4, d1, d2, d3, d4, l1, l2, l3, l4):
+    def __init__(self, calendar_data):
         Gtk.VBox.__init__(self)
 
-        self.title_1 = t1
-        self.title_2 = t2
-        self.title_3 = t3
-        self.title_4 = t4
+        self.calendar_data = calendar_data
 
-        self.date_1 = d1
-        self.date_2 = d2
-        self.date_3 = d3
-        self.date_4 = d4
+        self.event_stack = Gtk.Stack()
 
-        self.loc_1 = l1
-        self.loc_2 = l2
-        self.loc_3 = l3
-        self.loc_4 = l4
+        self.state = []
 
         self.create_screen()
 
@@ -45,29 +109,9 @@ class Calendar(Gtk.VBox):
         title.override_font(tempdesc)
         title.override_color(Gtk.StateFlags.NORMAL, Gdk.RGBA(255, 255, 255, 1.0))
 
-        event_title = Gtk.Label()
-        event_date = Gtk.Label()
-        event_location = Gtk.Label()
+        self.update_events()
 
-        titledesc = Pango.FontDescription("AnjaliOldLipi Bold 35")
-        event_title.override_font(titledesc)
-        event_title.override_color(Gtk.StateFlags.NORMAL, Gdk.RGBA(255, 255, 255, 1.0))
-
-        datedesc = Pango.FontDescription("AnjaliOldLipi Bold 25")
-        event_date.override_font(datedesc)
-        event_date.override_color(Gtk.StateFlags.NORMAL, Gdk.RGBA(255, 255, 255, 1.0))
-
-        locdesc = Pango.FontDescription("AnjaliOldLipi Bold 25")
-        event_location.override_font(locdesc)
-        event_location.override_color(Gtk.StateFlags.NORMAL, Gdk.RGBA(255, 255, 255, 1.0))
-
-        event_title.set_text(self.title_1)
-        event_date.set_text(self.date_1)
-        event_location.set_text("@ " + self.loc_1)
-
-        event_space.pack_start(event_title, True, False, 0)
-        event_space.pack_start(event_date, True, False, 0)
-        event_space.pack_start(event_location, True, False, 0)
+        event_space.pack_start(self.event_stack, True, False, 0)
 
         center.pack_start(logo_image, True, False, 0)
         center.pack_start(title, True, False, 0)
@@ -76,6 +120,45 @@ class Calendar(Gtk.VBox):
         center.pack_start(down_image, True, False, 0)
         self.add(center)
 
-    def on_key(self, event):
-        if event.keyval == Gdk.KEY_Up:
-            print("banana")
+    def update_events(self):
+        if self.calendar_data.updated == False:
+            return True
+
+        print("Contents Before:")
+        for event in self.event_stack:
+            print(event.position)
+        print("Cal Data", self.calendar_data.events)
+
+        # Remove old events from stack
+        removed_events = []
+        for event_object in self.event_stack:
+            event_title = event_object.title
+            print("Title:", event_title)
+            if event_title not in self.calendar_data.events:
+                removed_events.append(event_object)
+        for event_object in removed_events:
+            self.event_stack.remove(event_object)
+            print("Removed event", event_object.title)
+
+        # Adds new events to stack
+        for event_title, event in self.calendar_data.events.items():
+            event_object = self.event_stack.get_child_by_name(event_title)
+            if event_object is None:
+                print("New Object Added", event_title)
+                self.event_stack.add_named(Event(event), event_title)
+
+        # Handles Updated Events
+        for event_title, event in self.calendar_data.events.items():
+            event_object = self.event_stack.get_child_by_name(event_title)
+            event_object.update_event_data(event)
+            event_object.update_event()
+
+        # Redraw stack
+        self.event_stack.show_all()
+        self.calendar_data.updated = False
+
+        print("Contents After:")
+        for event in self.event_stack:
+            print(len(self.event_stack.get_children()))
+
+        return True

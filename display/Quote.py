@@ -2,6 +2,7 @@ from gi import require_version
 require_version('Gtk', '3.0')
 from gi.repository import Gtk, Gdk, Pango
 import Images as IMG
+import json
 
 
 class QuoteData():
@@ -10,14 +11,17 @@ class QuoteData():
         self.author = "AUTHOR"
 
     def update(self, topic, payload):
-        topic = str(topic).split('/')
-        if topic[1] == "quote":
-            print("Incoming from Quotes")
-            if topic[2] == "text":
-                self.text = str(payload.decode("utf-8"))
-            elif topic[2] == "author":
-                self.author = str(payload.decode("utf-8"))
-                
+        try:
+            topic = topic.split("/")
+            if topic[1] != "quote":
+                return
+
+            data = json.loads(payload)
+            self.text = data['quote_text']
+            self.author = data['author']
+        except Exception as e:
+            print("Something happened", e)
+
 
 class Quote(Gtk.VBox):
     def __init__(self, quote_data):
@@ -26,7 +30,6 @@ class Quote(Gtk.VBox):
         self.quote_data = quote_data
         self.text = Gtk.Label()
         self.author = Gtk.Label()
-        self.count = 0
 
         self.create_screen()
 
@@ -61,6 +64,5 @@ class Quote(Gtk.VBox):
 
     def update(self):
         self.text.set_text(self.quote_data.text)
-        self.author.set_text("~ " + self.quote_data.author + " ~" + str(self.count))
-        self.count+=1
+        self.author.set_text("~ " + self.quote_data.author + " ~")
         return True

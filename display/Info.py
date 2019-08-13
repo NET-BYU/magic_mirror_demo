@@ -37,15 +37,15 @@ class Info(Gtk.VBox):
         title.override_font(tempdesc)
         title.override_color(Gtk.StateFlags.NORMAL, Gdk.RGBA(255, 255, 255, 1.0))
 
-        descriptdesc = Pango.FontDescription("AnjaliOldLipi Bold Italic 30")
+        descriptdesc = Pango.FontDescription("AnjaliOldLipi Bold Italic 20")
         description.override_font(descriptdesc)
         description.override_color(Gtk.StateFlags.NORMAL, Gdk.RGBA(255, 255, 255, 1.0))
 
-        creatorsdesc = Pango.FontDescription("AnjaliOldLipi Mono 30")
+        creatorsdesc = Pango.FontDescription("AnjaliOldLipi Mono 20")
         creators.override_font(creatorsdesc)
         creators.override_color(Gtk.StateFlags.NORMAL, Gdk.RGBA(255, 255, 255, 1.0))
 
-        maintainersdesc = Pango.FontDescription("AnjaliOldLipi Mono 30")
+        maintainersdesc = Pango.FontDescription("AnjaliOldLipi Mono 20")
         maintainers.override_font(maintainersdesc)
         maintainers.override_color(Gtk.StateFlags.NORMAL, Gdk.RGBA(255, 255, 255, 1.0))
 
