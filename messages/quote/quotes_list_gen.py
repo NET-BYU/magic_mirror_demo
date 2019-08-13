@@ -116,7 +116,7 @@ quote = {
 quotes.append(quote)
 quote = {
     "author": "Nelson Mandela",
-    "quote_text": "\"It always seems impossible until it\’s done.\"",
+    "quote_text": "\"It always seems impossible until it\'s done.\"",
 }
 quotes.append(quote)
 quote = {
