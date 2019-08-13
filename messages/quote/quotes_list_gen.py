@@ -11,7 +11,7 @@ import json
 quotes = []
 quote = {
     "author": "Karl G. Maeser",
-    "quote_text": "\"Be yourself, but always your better self.",
+    "quote_text": "\"Be yourself, but always your better self.\"",
 }
 quotes.append(quote)
 quote = {
