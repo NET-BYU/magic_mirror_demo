@@ -29,7 +29,7 @@ class Info(Gtk.VBox):
                           "Joseph Miera\t\t\t Input module\n"
                           "Levi Fleming\t\t\t Calendar and Messenger APIs and hardware design\n"
                           "Max Warner\t\t\t Quote API and hardware design\n"
-                          "Michael Bjerregaard\t\t Weather API and hardware design")
+                          "Michael Bjerregaard\t Weather API and hardware design")
         maintainers.set_text("Maintained by:\n"
                              "[2019-Present] Creators")
 

@@ -67,8 +67,16 @@ class Event(Gtk.VBox):
 
     def update_event_data(self, event_data):
         self.title = event_data["Title"]
+        if self.title == "null":
+            self.title = ""
+
         self.time = event_data["Time"]
+        if self.time == "null":
+            self.time = ""
+
         self.location = event_data["Location"]
+        if self.location == "null":
+            self.location = ""
 
     def update_event(self):
         self.title_label.set_text(self.title)
