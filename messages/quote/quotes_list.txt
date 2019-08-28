@@ -1,7 +1,7 @@
 [
     {
         "author": "Karl G. Maeser",
-        "quote_text": "\"Be yourself, but always your better self."
+        "quote_text": "\"Be yourself, but always your better self.\""
     },
     {
         "author": "Thomas S. Monson",
@@ -85,7 +85,7 @@
     },
     {
         "author": "Nelson Mandela",
-        "quote_text": "\"It always seems impossible until it\\\u2019s done.\""
+        "quote_text": "\"It always seems impossible until it's done.\""
     },
     {
         "author": "Anne Frank",
