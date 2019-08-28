@@ -17,7 +17,7 @@ u = "messages"
 pa = "yMk7upKt2dcGEao3u2uxvXC4KnQRL224"
 h = "postman.cloudmqtt.com"
 p = 27408
-l = {0,1,2,3}
+l = [0,1,2,3]
 
 client = mqtt.Client()
 client.username_pw_set(u, password = pa)
@@ -44,7 +44,7 @@ def formatDate(time):
     month = int(newtime[5:7])
     day = int(newtime[8:10])
     weekDays = ("Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday")
-    months = ("Jan.","Feb.","Mar.","Apr.","May.","Jun.","Jul.","Aug.","Sep.","Oct.","Nov.","Dec.")
+    months = ("temp.","Jan.","Feb.","Mar.","Apr.","May.","Jun.","Jul.","Aug.","Sep.","Oct.","Nov.","Dec.")
     dateFormated = datetime.date(year,month,day)
     weekInd = dateFormated.weekday()
     dayOfWeek = weekDays[weekInd]
@@ -65,7 +65,7 @@ for i in l:
         m += "null"
     else:
         m += j[i]["LocationName"]
-    if (i == l):
+    if (i == l[-1]):
         m += "\"}"
     else:    
         m += "\"}, "
