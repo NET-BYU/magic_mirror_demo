@@ -34,6 +34,10 @@ down_img = "./src/direction/down.svg"
 # Home Status Bar
 message = "./src/homescreen/message.svg"
 
+# Auth screen
+blank = "./src/auth/blank.svg"
+arrow = "./src/auth/arrow.svg"
+
 # System Images
 iconpix = GdkPixbuf.Pixbuf.new_from_file_at_scale(icon, -1, 250, True)
 helppix = GdkPixbuf.Pixbuf.new_from_file_at_scale(helpimg, -1, 250, True)
@@ -84,3 +88,7 @@ status_rainpix = GdkPixbuf.Pixbuf.new_from_file_at_scale(rain_img, -1, 50, True)
 status_showerspix = GdkPixbuf.Pixbuf.new_from_file_at_scale(showers_img, -1, 50, True)
 status_snowpix = GdkPixbuf.Pixbuf.new_from_file_at_scale(snow_img, -1, 50, True)
 status_thunderstormpix = GdkPixbuf.Pixbuf.new_from_file_at_scale(thunderstorm_img, -1, 50, True)
+
+# Auth Screen
+blankpix = GdkPixbuf.Pixbuf.new_from_file_at_scale(blank, -1, 250, True)
+arrowpix = GdkPixbuf.Pixbuf.new_from_file_at_scale(arrow, -1, 250, True)

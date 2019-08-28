@@ -217,13 +217,13 @@ class Weather(Gtk.Layout):
         # self.add(center)
 
     def update_weather(self):
-        self.humidity_label.set_text(f"Humidity: {self.weather_data.humidity} %")
-        self.wind_label.set_text(f"Wind Speed: {self.weather_data.wind} mph")
-        self.cloudiness_label.set_text(f"Cloudiness: {self.weather_data.cloudiness} %")
+        self.humidity_label.set_text("Humidity: {} %".format(self.weather_data.humidity))
+        self.wind_label.set_text("Wind Speed: {} mph".format(self.weather_data.wind))
+        self.cloudiness_label.set_text("Cloudiness: {} %".format(self.weather_data.cloudiness))
         self.sunset_label.set_text(self.weather_data.sunset)
         self.sunrise_label.set_text(self.weather_data.sunrise)
         self.condition_label.set_text(self.weather_data.condition)
-        self.temperature_label.set_text(f"{round(self.weather_data.temperature, 1)} °F")
+        self.temperature_label.set_text("{} °F".format(round(self.weather_data.temperature, 1)))
 
         self.status_image.set_from_pixbuf(self.weather_data.image)
 
