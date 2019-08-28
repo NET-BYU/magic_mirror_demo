@@ -57,7 +57,7 @@ After=multi-user.target
 
 [Service]
 Type=simple
-ExecStart='$PWD' runPersonDetector.sh
+ExecStart=/bin/bash '$PWD'/runPersonDetector.sh
 
 [Install]
 WantedBy=multi-user.target' > magic-mirror-person-detector.service
