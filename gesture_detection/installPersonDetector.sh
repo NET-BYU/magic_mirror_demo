@@ -33,15 +33,26 @@ echo 'Removing old service file (uses sudo)'
 sudo rm magic-mirror-person-detector.service
 
 echo 'Generating Systemd Service file'
+# echo '[Unit]
+# Description=Magic Mirror Person Detector
+# After=multi-user.target
+# Conflicts=getty@tty1.service
+
+# [Service]
+# Type=simple
+# ExecStart=/usr/bin/python3 '$PWD'/personDetector.py
+# StandardInput=tty-force
+
+# [Install]
+# WantedBy=multi-user.target' > magic-mirror-person-detector.service
+
 echo '[Unit]
 Description=Magic Mirror Person Detector
 After=multi-user.target
-Conflicts=getty@tty1.service
 
 [Service]
 Type=simple
 ExecStart=/usr/bin/python3 '$PWD'/personDetector.py
-StandardInput=tty-force
 
 [Install]
 WantedBy=multi-user.target' > magic-mirror-person-detector.service
