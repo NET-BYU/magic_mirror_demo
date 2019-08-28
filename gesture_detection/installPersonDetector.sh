@@ -53,7 +53,8 @@ chmod +x runPersonDetector.sh
 
 echo '[Unit]
 Description=Magic Mirror Person Detector
-After=multi-user.target
+Wants=network-online.target
+After=network-online.target
 Conflicts=getty@tty1.service
 
 [Service]
