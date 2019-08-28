@@ -1,31 +1,33 @@
 Future Work Ideas for the Magic Mirror Demo
+$ - Non-trivial costs
+$$ - Expensive
 
-1. Lights around mirror
+1. Lights around mirror 
     i. Turn on when it senses a person
     ii. Distance between person and mirror effects brightnes
 
-2. New Frame
+2. New Frame (Go to ECEn shop for help and tools) 
     i. Possibly paint some BYU or ECEn stuff onto it
     ii. Make it out of aluminum or another metal
     iii. Put mirror on a hinge
     iv. Make it accomodate a bigger mirror
 
-3. Gesture detection
+3. Gesture detection $
     i. Swipe through pages by waving arms
     ii. Turn on mirror with a Gesture
 
-4. Add Audio
+4. Add Audio $$ 
     i. Have the mirror speak to those interacting with it
     ii. Add an alexis or googleMini to the design and let people talk to the mirror
 
-5. Add the kindle screen thing
-    i. Display updating QR code 
+5. Add the kindle screen thing $
+    i. Display updating QR code  
     ii. Display instructions on how to activate or use the mirror
 
-6. Get a bigger mirror
+6. Get a bigger mirror $$
     i. 6ft mirror so that people can see their entire bodies
     ii Add more monitors, or get get a bigger monitor
 
-7. Add battery pack (Make new frame accomodate a battery)
+7. Add battery pack (Make new frame accomodate a battery) $$
     i. Free the Magic from visable wires, and the wall...
 
