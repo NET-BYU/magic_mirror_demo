@@ -18,7 +18,7 @@ class PersonDetector:
 		self.ultrasonic.when_in_range = self.__person_detected
 		self.ultrasonic.when_out_of_range = self.__person_not_detected
 		self.pub_topic = pub_topic
-		self.timer = Timer(8.0, self.shutdownCountoff)
+		self.timer = Timer(5.0, self.shutdownCountoff)
 		user = "messages"
 		psw = "yMk7upKt2dcGEao3u2uxvXC4KnQRL224"
 		host = "postman.cloudmqtt.com"
@@ -33,6 +33,7 @@ class PersonDetector:
 		print("Person Detected")
 		if self.mirror_is_on:
 			self.timer.cancel()
+			self.timer = Timer(5.0, self.shutdownCountoff)
 		else:
 			self.client.publish(self.pub_topic, "{\"State\": \"ON\"}", qos=1, retain=True)
 			self.mirror_is_on = True
