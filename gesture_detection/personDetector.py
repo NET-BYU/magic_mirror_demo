@@ -40,8 +40,10 @@ class PersonDetector:
 	def __person_not_detected(self):
 		print("Person NOT detected")
 		if self.mirror_is_on:
-			self.timer.cancel()
-			self.timer.start()
+			try:
+				self.timer.start()
+			except Exception as RuntimeError:
+				print("Tried to start timer twice :P")
 
 	def shutdownCountoff(self):
 		print("Turning off mirror")
