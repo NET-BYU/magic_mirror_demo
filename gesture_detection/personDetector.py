@@ -40,6 +40,7 @@ class PersonDetector:
 	def __person_not_detected(self):
 		print("Person NOT detected")
 		if self.mirror_is_on:
+			self.timer.cancel()
 			self.timer.start()
 
 	def shutdownCountoff(self):
