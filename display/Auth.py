@@ -16,7 +16,7 @@ class PinData:
             if topic[1] != "pin":
                 return
 
-            self.pin_no = payload.decode('utf-8')
+            self.pin_no = payload
 
         except Exception as e:
             print("Something happened", e)
