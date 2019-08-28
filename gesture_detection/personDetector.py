@@ -24,7 +24,7 @@ class PersonDetector:
 		port = 27408
 		self.client = mqtt.Client()
 		self.client.username_pw_set(user, password = psw)
-		self.client.tls_set(ca_certs = "ca.crt")
+		self.client.tls_set(ca_certs = "../ca.crt")
 		self.client.connect(host,port,keepalive=60,bind_address="")
 
 	def __person_detected(self):

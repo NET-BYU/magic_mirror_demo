@@ -6,3 +6,5 @@ client/WeatherAPI/__pycache__/API\.cpython-36\.pyc
 display/mqtt_subscriber\.py
 
 display/venv/
+
+*.code-workspace
