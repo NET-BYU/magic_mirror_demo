@@ -46,13 +46,17 @@ echo 'Generating Systemd Service file'
 # [Install]
 # WantedBy=multi-user.target' > magic-mirror-person-detector.service
 
+echo '(cd '$PWD'; python3 personDetector.py)' > runPersonDetector.sh
+
+chmod +x runPersonDetector.sh
+
 echo '[Unit]
 Description=Magic Mirror Person Detector
 After=multi-user.target
 
 [Service]
 Type=simple
-ExecStart=/usr/bin/python3 '$PWD'/personDetector.py
+ExecStart='$PWD' runPersonDetector.sh
 
 [Install]
 WantedBy=multi-user.target' > magic-mirror-person-detector.service
