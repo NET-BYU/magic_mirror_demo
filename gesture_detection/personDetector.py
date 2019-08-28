@@ -2,6 +2,7 @@ from gpiozero import DistanceSensor
 import time
 import paho.mqtt.client as mqtt
 from threading import Timer
+import time
 
 # TODO - (1) Read from a config.json file to allow configuration
 
@@ -26,6 +27,7 @@ class PersonDetector:
 		self.client.username_pw_set(user, password = psw)
 		self.client.tls_set(ca_certs = "../ca.crt")
 		self.client.connect(host,port,keepalive=60,bind_address="")
+		self.client.publish(self.pub_topic, "OFF", qos=1, retain=True)	# Do MQTT Stuff to tell the mirror to shut off
 
 	def __person_detected(self):
 		print("Person Detected")
@@ -51,4 +53,5 @@ class PersonDetector:
 		
 
 pd = PersonDetector()	# Create an instance of the Person Detector to start the code
-
+while True:
+	time.sleep(10)
