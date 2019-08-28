@@ -4,5 +4,6 @@
     "max_dist" : 2,
     "threshold_dist" : 1,
     "activate_key" : " ",
-    "deactivate_key" : "h"
+    "deactivate_key" : "h",
+    "pub_topic": "personDetected"
 }
