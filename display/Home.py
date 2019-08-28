@@ -99,7 +99,7 @@ class Home(Gtk.VBox):
         statusbar.pack_start(weatherbox, True, True, 0)
         statusbar.pack_start(namebox, True, True, 0)
 
-        center.pack_end(statusbar, False, False, 0)
+        center.pack_start(statusbar, False, False, 0)
 
         self.add(center)
 

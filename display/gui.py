@@ -24,7 +24,7 @@ class MainWindow(Gtk.Window):
     def __init__(self):
         Gtk.Window.__init__(self, title="Magic Mirror")
 
-        self.state_list = ["HOME", "WEATHER", "TIME", "MESSAGES", "QUOTE", "CALENDAR", "HELP", "INFO", "MIRROR"]
+        self.state_list = ["HOME", "WEATHER", "TIME", "QUOTE", "CALENDAR", "HELP", "INFO", "MIRROR"]
         self.state = ""
 
         # Data classes which update from subscriber
@@ -108,9 +108,9 @@ class MainWindow(Gtk.Window):
             elif event.keyval == Gdk.KEY_t and self.state is not self.state_list[2]:
                 self.state = "TIME"
                 self.app_stack.set_visible_child_full("Time", Gtk.StackTransitionType.CROSSFADE)
-            elif event.keyval == Gdk.KEY_m and self.state is not self.state_list[3]:
-                self.state = "MESSAGES"
-                self.app_stack.set_visible_child_full("Message", Gtk.StackTransitionType.CROSSFADE)
+            # elif event.keyval == Gdk.KEY_m and self.state is not self.state_list[3]:
+                # self.state = "MESSAGES"
+                # self.app_stack.set_visible_child_full("Message", Gtk.StackTransitionType.CROSSFADE)
             elif event.keyval == Gdk.KEY_q and self.state is not self.state_list[4]:
                 self.state = "QUOTE"
                 self.app_stack.set_visible_child_full("Quote", Gtk.StackTransitionType.CROSSFADE)
@@ -133,8 +133,8 @@ class MainWindow(Gtk.Window):
                         self.app_stack.set_visible_child_full("Weather", Gtk.StackTransitionType.SLIDE_RIGHT)
                     elif self.state is "TIME":
                         self.app_stack.set_visible_child_full("Time", Gtk.StackTransitionType.SLIDE_LEFT_RIGHT)
-                    elif self.state is "MESSAGES":
-                        self.app_stack.set_visible_child_full("Message", Gtk.StackTransitionType.SLIDE_LEFT_RIGHT)
+                    # elif self.state is "MESSAGES":
+                        # self.app_stack.set_visible_child_full("Message", Gtk.StackTransitionType.SLIDE_LEFT_RIGHT)
                     elif self.state is "QUOTE":
                         self.app_stack.set_visible_child_full("Quote", Gtk.StackTransitionType.SLIDE_LEFT_RIGHT)
                     elif self.state is "CALENDAR":
@@ -155,8 +155,8 @@ class MainWindow(Gtk.Window):
                         self.app_stack.set_visible_child_full("Weather", Gtk.StackTransitionType.SLIDE_LEFT_RIGHT)
                     elif self.state is "TIME":
                         self.app_stack.set_visible_child_full("Time", Gtk.StackTransitionType.SLIDE_LEFT_RIGHT)
-                    elif self.state is "MESSAGES":
-                        self.app_stack.set_visible_child_full("Message", Gtk.StackTransitionType.SLIDE_LEFT_RIGHT)
+                    # elif self.state is "MESSAGES":
+                        # self.app_stack.set_visible_child_full("Message", Gtk.StackTransitionType.SLIDE_LEFT_RIGHT)
                     elif self.state is "QUOTE":
                         self.app_stack.set_visible_child_full("Quote", Gtk.StackTransitionType.SLIDE_LEFT_RIGHT)
                     elif self.state is "CALENDAR":
