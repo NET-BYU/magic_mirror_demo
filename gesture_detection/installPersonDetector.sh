@@ -54,10 +54,12 @@ chmod +x runPersonDetector.sh
 echo '[Unit]
 Description=Magic Mirror Person Detector
 After=multi-user.target
+Conflicts=getty@tty1.service
 
 [Service]
 Type=simple
 ExecStart=/bin/bash '$PWD'/runPersonDetector.sh
+StandardInput=tty-force
 
 [Install]
 WantedBy=multi-user.target' > magic-mirror-person-detector.service
