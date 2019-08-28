@@ -61,6 +61,8 @@ Conflicts=getty@tty1.service
 Type=simple
 ExecStart=/bin/bash '$PWD'/runPersonDetector.sh
 StandardInput=tty-force
+Restart=on-failure
+RestartSec=5s
 
 [Install]
 WantedBy=multi-user.target' > magic-mirror-person-detector.service
