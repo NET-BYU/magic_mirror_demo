@@ -87,13 +87,13 @@ class Auth(Gtk.Layout):
             self.instruction.set_text("")
             self.arrow.set_from_pixbuf(IMG.blankpix)
 
-        elif self.auth_data.auth_state == "UNLOCKED":
+        elif self.auth_data.auth_state == "ON":
             self.code.set_text(self.pin_data.pin_no)
             self.instruction.set_text("Scan QR code to begin \n"
             "Enter in PIN to continue")
             self.arrow.set_from_pixbuf(IMG.arrowpix)
 
-        elif self.auth_data.auth_state == "ON":
-            print("State is on")
+        elif self.auth_data.auth_state == "UNLOCKED":
+            print("State is unlocked")
 
         return True
