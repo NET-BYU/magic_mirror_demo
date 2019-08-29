@@ -1,6 +1,6 @@
 import paho.mqtt.client as mqtt
 
-from Client.WeatherAPI.WeatherAPI import Weather
+from client.WeatherAPI.WeatherAPI import Weather
 
 import time
 import json
