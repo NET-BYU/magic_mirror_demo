@@ -27,13 +27,16 @@ Environment=PYTHONUNBUFFERED=1
 [Install]
 WantedBy=multi-user.target' > magic-mirror-person-detector.service
 
+echo 'Stopping previous person detector service (uses sudo)'
+sudo systemctl stop magic-mirror-person-detector.service
+
 echo 'Copying Service file into /lib/systemd/system (uses sudo)'
 sudo cp magic-mirror-person-detector.service /lib/systemd/system/magic-mirror-person-detector.service
 sudo cp magic-mirror-person-detector.service /etc/systemd/system/magic-mirror-person-detector.service
 sudo chmod 644 /etc/systemd/system/magic-mirror-person-detector.service
 
 echo 'Enabling person detector to start at bootup (uses sudo)'
-sudo systemctl enable magic-mirror-person-detector
+sudo systemctl enable magic-mirror-person-detector.service
 
 #Check to see if they want to start the Person Detector now.
 while true; do
