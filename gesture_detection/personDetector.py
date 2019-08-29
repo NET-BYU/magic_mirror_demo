@@ -23,7 +23,7 @@ class PersonDetector:
 		self.ultrasonic.when_in_range = self.__person_detected
 		self.ultrasonic.when_out_of_range = self.__person_not_detected
 		self.pub_topic = pub_topic
-		self.timer = Timer(5.0, self.shutdownCountoff)
+		self.timer = Timer(3.0, self.shutdownCountoff)
 		# self.client = mqtt.Client()
 		# self.client.username_pw_set(user, password = psw)
 		# self.client.tls_set(ca_certs = "../ca.crt")
@@ -35,7 +35,7 @@ class PersonDetector:
 		print("Person Detected")
 		if self.mirror_is_on:
 			self.timer.cancel()
-			self.timer = Timer(5.0, self.shutdownCountoff)
+			self.timer = Timer(3.0, self.shutdownCountoff)
 		else:
 			# self.client.publish(self.pub_topic, "{\"State\": \"ON\"}", qos=1, retain=True)
 			publish.single(self.pub_topic,"{\"State\": \"ON\"}", hostname=self.host, port=self.port, retain=True, qos=1, auth={"username": self.user, "password": self.psw}, tls={"ca_certs": "../ca.crt"})
@@ -45,7 +45,7 @@ class PersonDetector:
 		print("Person NOT detected")
 		if self.mirror_is_on:
 			try:
-				self.timer = Timer(5.0, self.shutdownCountoff)
+				self.timer = Timer(3.0, self.shutdownCountoff)
 				self.timer.start()
 			except Exception as RuntimeError:
 				print("Tried to start timer twice :P")
