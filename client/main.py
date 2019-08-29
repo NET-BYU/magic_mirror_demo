@@ -1,6 +1,6 @@
 import paho.mqtt.client as mqtt
 
-from Client.WeatherAPI.WeatherAPI import Weather
+from WeatherAPI.WeatherAPI import Weather
 
 import time
 import json
@@ -12,7 +12,7 @@ class main:
     password = "yMk7upKt2dcGEao3u2uxvXC4KnQRL224"
     username = "messages"
     port = 27408
-    ssl_certificate = "C:/Users/mbjerreg/Downloads/ca.crt"
+    ssl_certificate = "/home/maw276/magic_mirror_demo/ca.crt"
 
     def on_log(self, client, userdata, level, buf):
         print("log: ", buf)
@@ -35,12 +35,12 @@ class main:
 
     def run(self):
         # self.client.loop_forever()
-        while True:
+        #while True:
             # self.get_all()
-            self.get_weather()
-            time.sleep(600)
-            pass
-        pass
+        self.get_weather()
+            #time.sleep(600)
+            # pass
+        # pass
 
     def create_client(self, name):
         print("Creating Client")
