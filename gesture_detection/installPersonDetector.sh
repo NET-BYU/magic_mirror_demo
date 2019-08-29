@@ -22,7 +22,6 @@ ExecStart=/bin/bash '$PWD'/runPersonDetector.sh
 StandardInput=tty-force
 Restart=on-failure
 RestartSec=5s
-Environment=PYTHONUNBUFFERED=1
 
 [Install]
 WantedBy=multi-user.target' > magic-mirror-person-detector.service

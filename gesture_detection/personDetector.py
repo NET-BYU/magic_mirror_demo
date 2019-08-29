@@ -11,7 +11,7 @@ class PersonDetector:
 	ultrasonic = None		# The proximity sensor
 	timer = None			# The timer which counts down when a person is no longer detected before turning the mirror off
 	pub_topic = None		# The MQTT topic we need to publish to
-	client = None			# The MQTT client we use to publish
+	# client = None			# The MQTT client we use to publish
 	
 	def __init__(self, echo_pin=17, trigger_pin=4, max_dist=2, threshold_dist=1, pub_topic="immerse/auth"):
 		self.ultrasonic = DistanceSensor(echo=echo_pin, trigger=trigger_pin, max_distance=max_dist, threshold_distance=threshold_dist)
@@ -23,11 +23,12 @@ class PersonDetector:
 		psw = "yMk7upKt2dcGEao3u2uxvXC4KnQRL224"
 		host = "postman.cloudmqtt.com"
 		port = 27408
-		self.client = mqtt.Client()
-		self.client.username_pw_set(user, password = psw)
-		self.client.tls_set(ca_certs = "../ca.crt")
-		self.client.connect(host,port,keepalive=60,bind_address="")
-		self.client.publish(self.pub_topic, "{\"State\": \"OFF\"}", qos=1, retain=True)	# Do MQTT Stuff to tell the mirror to shut off
+		# self.client = mqtt.Client()
+		# self.client.username_pw_set(user, password = psw)
+		# self.client.tls_set(ca_certs = "../ca.crt")
+		# self.client.connect(host,port,keepalive=60,bind_address="")
+		# self.client.publish(self.pub_topic, "{\"State\": \"OFF\"}", qos=1, retain=True)	# Do MQTT Stuff to tell the mirror to shut off
+		publish.single(self.pub_topic,"{\"State\": \"OFF\"}", hostname=host, port=port, retain=True, qos=1, auth={"username": user, "password": psw}, tls={"ca_certs": "../ca.crt"})
 
 	def __person_detected(self):
 		print("Person Detected")
@@ -35,7 +36,8 @@ class PersonDetector:
 			self.timer.cancel()
 			self.timer = Timer(5.0, self.shutdownCountoff)
 		else:
-			self.client.publish(self.pub_topic, "{\"State\": \"ON\"}", qos=1, retain=True)
+			# self.client.publish(self.pub_topic, "{\"State\": \"ON\"}", qos=1, retain=True)
+			publish.single(self.pub_topic,"{\"State\": \"ON\"}", hostname=host, port=port, retain=True, qos=1, auth={"username": user, "password": psw}, tls={"ca_certs": "../ca.crt"})
 			self.mirror_is_on = True
 
 	def __person_not_detected(self):
@@ -49,7 +51,8 @@ class PersonDetector:
 
 	def shutdownCountoff(self):
 		print("Turning off mirror")
-		self.client.publish(self.pub_topic, "{\"State\": \"OFF\"}", qos=1, retain=True)	# Do MQTT Stuff to tell the mirror to shut off
+		# self.client.publish(self.pub_topic, "{\"State\": \"OFF\"}", qos=1, retain=True)	# Do MQTT Stuff to tell the mirror to shut off
+		publish.single(self.pub_topic,"{\"State\": \"OFF\"}", hostname=host, port=port, retain=True, qos=1, auth={"username": user, "password": psw}, tls={"ca_certs": "../ca.crt"})
 		self.mirror_is_on = False
 
 	@classmethod
