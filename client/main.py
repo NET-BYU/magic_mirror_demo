@@ -12,7 +12,7 @@ class main:
     password = "yMk7upKt2dcGEao3u2uxvXC4KnQRL224"
     username = "messages"
     port = 27408
-    ssl_certificate = "C:/Users/mbjerreg/Downloads/ca.crt"
+    ssl_certificate = "../ca.crt"
 
     def on_log(self, client, userdata, level, buf):
         print("log: ", buf)
@@ -35,10 +35,10 @@ class main:
 
     def run(self):
         # self.client.loop_forever()
-        while True:
+        #while True:
             # self.get_all()
-            self.get_weather()
-            time.sleep(600)
+        self.get_weather()
+            #time.sleep(600)
             pass
         pass
 
