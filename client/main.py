@@ -12,7 +12,7 @@ class main:
     password = "yMk7upKt2dcGEao3u2uxvXC4KnQRL224"
     username = "messages"
     port = 27408
-    ssl_certificate = "../ca.crt"
+    ssl_certificate = "/home/maw276/magic_mirror_demo/ca.crt"
 
     def on_log(self, client, userdata, level, buf):
         print("log: ", buf)
