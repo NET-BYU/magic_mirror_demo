@@ -59,4 +59,5 @@ class PersonDetector:
 
 pd = PersonDetector()	# Create an instance of the Person Detector to start the code
 while True:
-	time.sleep(10)
+	print("Person detector still alive! Sleeping for 20 seconds...")
+	time.sleep(20)
