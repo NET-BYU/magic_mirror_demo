@@ -1,6 +1,7 @@
 from gpiozero import DistanceSensor
 import time
 import paho.mqtt.client as mqtt
+import paho.mqtt.publish as publish
 from threading import Timer
 import time
 
