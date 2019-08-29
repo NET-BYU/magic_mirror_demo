@@ -87,7 +87,7 @@ class Auth(Gtk.Layout):
             self.code.set_text("")
             self.instruction.set_text("")
             self.arrow.set_from_pixbuf(IMG.blankpix)
-            keyboard.press_and_release('n')
+            keyboard.press_and_release('a')
 
         elif self.auth_data.auth_state == "ON":
             print("State is on")

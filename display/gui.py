@@ -92,7 +92,8 @@ class MainWindow(Gtk.Window):
         elif event.keyval == Gdk.KEY_F11:
             self.fullscreen()
         if self.auth_data.auth_state == "OFF":
-            # self.app_stack.set_visible_child_full("Auth", Gtk.StackTransitionType.CROSSFADE)
+            if event.keyval == Gdk.KEY_a:
+                self.app_stack.set_visible_child_full("Auth", Gtk.StackTransitionType.CROSSFADE)
             return
         elif self.auth_data.auth_state == "UNLOCKED":
             if event.keyval == Gdk.KEY_h:
@@ -112,19 +113,19 @@ class MainWindow(Gtk.Window):
             # elif event.keyval == Gdk.KEY_m and self.state is not self.state_list[3]:
                 # self.state = "MESSAGES"
                 # self.app_stack.set_visible_child_full("Message", Gtk.StackTransitionType.CROSSFADE)
-            elif event.keyval == Gdk.KEY_q and self.state is not self.state_list[4]:
+            elif event.keyval == Gdk.KEY_q and self.state is not self.state_list[3]:
                 self.state = "QUOTE"
                 self.app_stack.set_visible_child_full("Quote", Gtk.StackTransitionType.CROSSFADE)
-            elif event.keyval == Gdk.KEY_c and self.state is not self.state_list[5]:
+            elif event.keyval == Gdk.KEY_c and self.state is not self.state_list[4]:
                 self.state = "CALENDAR"
                 self.app_stack.set_visible_child_full("Calendar", Gtk.StackTransitionType.CROSSFADE)
-            elif event.keyval == Gdk.KEY_F1 and self.state is not self.state_list[6]:
+            elif event.keyval == Gdk.KEY_F1 and self.state is not self.state_list[5]:
                 self.state = "HELP"
                 self.app_stack.set_visible_child_full("Help", Gtk.StackTransitionType.CROSSFADE)
-            elif event.keyval == Gdk.KEY_i and self.state is not self.state_list[7]:
+            elif event.keyval == Gdk.KEY_i and self.state is not self.state_list[6]:
                 self.state = "INFO"
                 self.app_stack.set_visible_child_full("Info", Gtk.StackTransitionType.CROSSFADE)
-            elif event.keyval == Gdk.KEY_n and self.state is not self.state_list[8]:
+            elif event.keyval == Gdk.KEY_n and self.state is not self.state_list[7]:
                 self.state = "MIRROR"
                 self.app_stack.set_visible_child_full("Mirror", Gtk.StackTransitionType.CROSSFADE)
             elif event.keyval == Gdk.KEY_Left:
