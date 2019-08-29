@@ -39,8 +39,8 @@ class main:
             # self.get_all()
         self.get_weather()
             #time.sleep(600)
-            pass
-        pass
+            # pass
+        # pass
 
     def create_client(self, name):
         print("Creating Client")
