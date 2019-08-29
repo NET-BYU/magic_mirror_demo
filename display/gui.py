@@ -92,6 +92,7 @@ class MainWindow(Gtk.Window):
         elif event.keyval == Gdk.KEY_F11:
             self.fullscreen()
         if self.auth_data.auth_state == "OFF":
+            # self.app_stack.set_visible_child_full("Auth", Gtk.StackTransitionType.CROSSFADE)
             return
         elif self.auth_data.auth_state == "UNLOCKED":
             if event.keyval == Gdk.KEY_h:

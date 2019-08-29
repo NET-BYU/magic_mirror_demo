@@ -83,11 +83,14 @@ class Auth(Gtk.Layout):
 
     def update(self):
         if self.auth_data.auth_state == "OFF":
+            print("State is off")
             self.code.set_text("")
             self.instruction.set_text("")
             self.arrow.set_from_pixbuf(IMG.blankpix)
+            keyboard.press_and_release('n')
 
         elif self.auth_data.auth_state == "ON":
+            print("State is on")
             self.code.set_text(self.pin_data.pin_no)
             self.instruction.set_text("Scan QR code to begin \n"
             "Enter in PIN to continue")
