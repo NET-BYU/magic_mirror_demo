@@ -37,10 +37,10 @@ class Help(Gtk.VBox):
                           "[F1]\t\t or Question Mark shows this help screen\n"
                           "[i]\t\t or Info Circle shows the About screen\n"
                           "[n]\t\t shows a blank screen for mirror purposes\n"
-                          "[Left]\t\t cycles through app screens forwards\n"
+                          "[Left]\t cycles through app screens forwards\n"
                           "[Right]\t\t cycles through app screens backwards\n"
-                          "[Up]\t\t cycles through calendar events\n"
-                          "[Down]\t\t cycles through calendar events\n"
+                          "[Up]\t cycles through calendar events\n"
+                          "[Down]\t cycles through calendar events\n"
                           " \n"
                           "For any other technical/development aspect of this project, please refer to the wiki at\n "
                           "http://immerse.byu.edu/InteractiveDisplays/dokuwiki/doku.php?id=demo_info:iot:start\n")
