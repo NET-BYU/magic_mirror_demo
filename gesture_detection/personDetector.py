@@ -4,6 +4,7 @@ import paho.mqtt.client as mqtt
 import paho.mqtt.publish as publish
 from threading import Timer
 import time
+import random
 
 # TODO - (1) Read from a config.json file to allow configuration
 
@@ -38,6 +39,7 @@ class PersonDetector:
 			self.timer = Timer(3.0, self.shutdownCountoff)
 		else:
 			# self.client.publish(self.pub_topic, "{\"State\": \"ON\"}", qos=1, retain=True)
+			self.publishRandomPin()
 			publish.single(self.pub_topic,"{\"State\": \"ON\"}", hostname=self.host, port=self.port, retain=True, qos=1, auth={"username": self.user, "password": self.psw}, tls={"ca_certs": "../ca.crt"})
 			self.mirror_is_on = True
 
@@ -55,6 +57,13 @@ class PersonDetector:
 		# self.client.publish(self.pub_topic, "{\"State\": \"OFF\"}", qos=1, retain=True)	# Do MQTT Stuff to tell the mirror to shut off
 		publish.single(self.pub_topic,"{\"State\": \"OFF\"}", hostname=self.host, port=self.port, retain=True, qos=1, auth={"username": self.user, "password": self.psw}, tls={"ca_certs": "../ca.crt"})
 		self.mirror_is_on = False
+
+	def publishRandomPin(self):
+		pin = ""
+		for i in range(0,4):
+			pin += str(random.randint(0,9))
+		print("Setting the pin to " + pin)
+		publish.single("immerse/pin", pin, hostname=self.host, port=self.port, retain=True, qos=1, auth={"username": self.user, "password": self.psw}, tls={"ca_certs": "../ca.crt"})
 
 	@classmethod
 	def init_from_json(jsonFileName="config.json"):
