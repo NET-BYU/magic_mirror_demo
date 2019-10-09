@@ -49,12 +49,12 @@ class Help(Gtk.VBox):
         title.override_font(tempdesc)
         title.override_color(Gtk.StateFlags.NORMAL, Gdk.RGBA(255, 255, 255, 1.0))
 
-        descriptdesc = Pango.FontDescription("Ubuntu Mono Italic 18")
+        descriptdesc = Pango.FontDescription("Ubuntu Mono Italic 14")
         description.override_font(descriptdesc)
         description.override_color(Gtk.StateFlags.NORMAL, Gdk.RGBA(255, 255, 255, 1.0))
         description.set_line_wrap(True)
 
-        helpdesc = Pango.FontDescription("Ubuntu Mono 18")
+        helpdesc = Pango.FontDescription("Ubuntu Mono 14")
         helptext.override_font(helpdesc)
         helptext.override_color(Gtk.StateFlags.NORMAL, Gdk.RGBA(255, 255, 255, 1.0))
         # help.set_line_wrap(True)
