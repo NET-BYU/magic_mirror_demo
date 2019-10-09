@@ -98,7 +98,7 @@ class Home(Gtk.VBox):
         statusbar.pack_start(eventbox, True, False, 0)
         statusbar.pack_start(timebox, True, False, 0)
         statusbar.pack_start(weatherbox, True, False, 0)
-        statusbar.pack_start(namebox, True, False, 0)
+        # statusbar.pack_start(namebox, True, False, 0)
 
         center.pack_start(statusbar, False, False, 0)
 
@@ -115,8 +115,8 @@ class Home(Gtk.VBox):
             self.cal_time.set_text(str(list(self.cal_data.events.values())[0]["Time"]))
             self.cal_title.set_text(shorten(str(list(self.cal_data.events.keys())[0]), width=30, placeholder="..."))
 
-        if self.auth_data.auth_state == "OFF":
-            self.username.set_text("Future Engineer")
+        # if self.auth_data.auth_state == "OFF":
+            # self.username.set_text("Future Engineer")
         # else:
             # self.username.set_text(self.home_data.name)
 
