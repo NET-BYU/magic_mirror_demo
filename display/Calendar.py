@@ -1,4 +1,5 @@
 from gi import require_version
+from textwrap import shorten
 require_version('Gtk', '3.0')
 from gi.repository import Gtk, Gdk, Pango
 
@@ -79,7 +80,7 @@ class Event(Gtk.VBox):
             self.location = ""
 
     def update_event(self):
-        self.title_label.set_text(self.title)
+        self.title_label.set_text(shorten(self.title, width=30, placeholder="..."))
         self.location_label.set_text(self.location)
         self.time_label.set_text(self.time)
 
