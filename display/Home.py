@@ -1,4 +1,5 @@
 from gi import require_version
+from textwrap import shorten
 require_version('Gtk', '3.0')
 from gi.repository import Gtk, Gdk, Pango
 from datetime import datetime
@@ -112,7 +113,7 @@ class Home(Gtk.VBox):
 
         if len(list(self.cal_data.events.keys())) != 0:
             self.cal_time.set_text(str(list(self.cal_data.events.values())[0]["Time"]))
-            self.cal_title.set_text(str(list(self.cal_data.events.keys())[0]))
+            self.cal_title.set_text(shorten(str(list(self.cal_data.events.keys())[0]), width=30, placeholder="..."))
 
         if self.auth_data.auth_state == "OFF":
             self.username.set_text("Future Engineer")
