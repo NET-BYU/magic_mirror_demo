@@ -95,10 +95,10 @@ class Home(Gtk.VBox):
         namebox.pack_start(self.welcome, False, False, 0)
         namebox.pack_start(self.username, False, False, 0)
 
-        statusbar.pack_start(eventbox, True, True, 0)
-        statusbar.pack_start(timebox, True, True, 0)
-        statusbar.pack_start(weatherbox, True, True, 0)
-        statusbar.pack_start(namebox, True, True, 0)
+        statusbar.pack_start(eventbox, True, False, 0)
+        statusbar.pack_start(timebox, True, False, 0)
+        statusbar.pack_start(weatherbox, True, False, 0)
+        statusbar.pack_start(namebox, True, False, 0)
 
         center.pack_start(statusbar, False, False, 0)
 
