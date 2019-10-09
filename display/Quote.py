@@ -46,7 +46,7 @@ class Quote(Gtk.VBox):
         # text.set_text(self.quote_data.text)
         # author.set_text("~ " + self.quote_data.author + " ~")
 
-        tempdesc = Pango.FontDescription("AnjaliOldLipi Bold 30")
+        tempdesc = Pango.FontDescription("AnjaliOldLipi Bold 20")
         self.text.override_font(tempdesc)
         self.text.override_color(Gtk.StateFlags.NORMAL, Gdk.RGBA(255, 255, 255, 1.0))
         self.text.set_line_wrap(True)
